@@ -52,6 +52,18 @@ const state = {
   sortDirection: "asc",
 };
 
+const PRIORITY_APARTMENT_COLUMNS = [
+  "Projekt",
+  "Označenie bytu",
+  "Stav",
+  "Počet izieb",
+  "Interiér m²",
+  "Aktuálna cena",
+  "Cena za m² interiéru",
+  "Mestská časť",
+  "Zdroj",
+];
+
 const chartRegistry = new Map();
 const euro = new Intl.NumberFormat("sk-SK", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 0 });
@@ -141,7 +153,11 @@ async function loadData() {
     state.prices = prices.rows || [];
     state.priceMeta = prices.meta || {};
     state.apartments = apartments.rows || [];
-    state.apartmentColumns = apartments.columns || [];
+    const sourceColumns = apartments.columns || [];
+    state.apartmentColumns = [
+      ...PRIORITY_APARTMENT_COLUMNS.filter((column) => sourceColumns.includes(column)),
+      ...sourceColumns.filter((column) => !PRIORITY_APARTMENT_COLUMNS.includes(column)),
+    ];
     state.apartmentMeta = apartments.meta || {};
     state.sources = sources.rows || [];
     renderAll();
@@ -668,4 +684,5 @@ function renderAll() {
 bindControls();
 activateRoute();
 loadData();
+
 
