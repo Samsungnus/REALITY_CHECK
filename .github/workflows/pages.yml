@@ -1,0 +1,56 @@
+name: Publikovať dashboard
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Načítať repozitár
+        uses: actions/checkout@v4
+
+      - name: Pripraviť Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Nainštalovať čítačku Excelov
+        run: pip install -r requirements.txt
+
+      - name: Spracovať Excel súbory
+        run: python scripts/build_data.py
+
+      - name: Pripraviť stránku
+        run: node scripts/build.mjs
+
+      - name: Nastaviť GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Nahrať zostavenú stránku
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Zverejniť na GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

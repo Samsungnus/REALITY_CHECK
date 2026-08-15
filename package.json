@@ -1,0 +1,9 @@
+{
+  "name": "bratislava-byvanie-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:site": "node scripts/build.mjs"
+  }
+}

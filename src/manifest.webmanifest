@@ -1,0 +1,9 @@
+{
+  "name": "Bratislavské bývanie",
+  "short_name": "Bývanie BA",
+  "description": "Prehľad cien bytov a developerských projektov v Bratislave.",
+  "start_url": "./#/prehlad",
+  "display": "standalone",
+  "background_color": "#f4f2ec",
+  "theme_color": "#0d2a30"
+}

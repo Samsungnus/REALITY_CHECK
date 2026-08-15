@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "sourceFile": "bratislava_ceny_bytov_2020_2026.xlsx",
+    "sheet": "Zdroje",
+    "generatedAt": "2026-08-15T10:31:28+00:00",
+    "rowCount": 17
+  },
+  "rows": [
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q4 2020",
+      "Hodnota / informácia": "3 595 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/app/cmsSiteAttachment.php?ID=313&disposition=inline"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q4 2021",
+      "Hodnota / informácia": "4 256 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/app/cmsSiteAttachment.php?ID=377&disposition=inline"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q4 2022",
+      "Hodnota / informácia": "približne 4 900 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.archinfo.sk/diskusia/blog/architektura-vseobecne/v-bratislave-sa-v-roku-2022-predalo-najmenej-bytov-od-financnej-krizy-rast-cien-sa-zastavil.html"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q4 2023",
+      "Hodnota / informácia": "5 136 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.event2all.sk/2024/01/23/v-roku-2023-sa-v-bratislave-predalo-najmenej-novostavieb-od-hospodarskej-krizy-nova-ponuka-vsak-bola-rovnako-nizka-a-ceny-preto-stagnovali/"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q4 2024",
+      "Hodnota / informácia": "5 013 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/blog/11/ceny-novostavieb-v-bratislave-ostali-v-roku-2024-nezmenene-predaj-vyrazne-prekonal-predosly-rok-"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q1–Q4 2025",
+      "Hodnota / informácia": "5 213 až 5 302 €/m²",
+      "Použitie": "Zdrojové body",
+      "URL": "https://www.bencont.sk/blog/29/predaj-bytov-v-bratislave-sa-zastabilizoval-tlaky-na-zmenu-cien-zostavaju-obmedzene"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q1 2026",
+      "Hodnota / informácia": "5 384,32 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bratislavskenoviny.sk/aktuality/88336-presne-cisla-viete-kolko-aktualne-zaplatite-v-jednotlivych-okresoch-bratislavy-za-byt-v-novostavbe"
+    },
+    {
+      "Segment": "Novostavby",
+      "Obdobie": "Q2 2026",
+      "Hodnota / informácia": "5 341 €/m²",
+      "Použitie": "Najnovší zdrojový bod",
+      "URL": "https://www.bencont.sk/blog/61/trh-s-bratislavskymi-novostavbami-preslapuje-predaj-ostava-obmedzeny"
+    },
+    {
+      "Segment": "2i novostavba",
+      "Obdobie": "Q1 2025",
+      "Hodnota / informácia": "49,82 m²; 242 824 €",
+      "Použitie": "Kalibrácia výmery a koeficientu",
+      "URL": "https://www.bencont.sk/app/cmsSiteAttachment.php?ID=640&disposition=inline"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q2 2020",
+      "Hodnota / informácia": "2 783 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.event2all.sk/2020/08/19/bencont-prepad-cien-sa-nepotvrdil-byty-z-druhej-ruky-v-bratislave-mierne-zdrazeli-cena-priemerneho-najomneho-vsak-klesla/"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q4 2021",
+      "Hodnota / informácia": "3 287 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.finsider.sk/rychle-spravy/cena-prenajmu-bytu-v-bratislave/"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q4 2022",
+      "Hodnota / informácia": "3 768 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bratislavskenoviny.sk/aktuality/75469-velka-analyza-za-kolko-si-aktualne-kupite-v-bratislave-byt-a-za-kolko-si-ho-prenajmete"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q4 2023",
+      "Hodnota / informácia": "3 512 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/app/cmsSiteAttachment.php?ID=538&disposition=inline"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q4 2024",
+      "Hodnota / informácia": "3 821,67 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/blog/16/znizujuce-sa-uroky-podporuju-aktivitu-na-realitnom-trhu-ceny-starsich-bytov-vzrastli-aj-na-konci-roka"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q4 2025",
+      "Hodnota / informácia": "4 222,27 €/m²",
+      "Použitie": "Zdrojový bod",
+      "URL": "https://www.bencont.sk/blog/30/ceny-starsich-bytov-pokracuju-v-raste-aj-vdaka-investicnemu-dopytu"
+    },
+    {
+      "Segment": "Sekundárny trh",
+      "Obdobie": "Q1 2026",
+      "Hodnota / informácia": "4 350,86 €/m²",
+      "Použitie": "Najnovší zdrojový bod",
+      "URL": "https://www.bencont.sk/blog/47/starsie-byty-v-bratislave-zdrazeli-takmer-o-12--najomne-rastie-uz-len-minimalne"
+    },
+    {
+      "Segment": "Staršie 2i byty",
+      "Obdobie": "máj 2026",
+      "Hodnota / informácia": "4 316 €/m²",
+      "Použitie": "Kontrola úrovne modelu",
+      "URL": "https://www.realitnaunia.sk/realitny-barometer"
+    }
+  ]
+}
