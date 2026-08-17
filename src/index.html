@@ -44,6 +44,7 @@
         <a href="#/ceny" data-route="ceny"><span aria-hidden="true">↗</span> Vývoj cien</a>
         <a href="#/byty" data-route="byty"><span aria-hidden="true">▦</span> Ponuka bytov</a>
         <a href="#/mapa" data-route="mapa"><span aria-hidden="true">⌖</span> Mapa projektov</a>
+        <a href="#/komentare" data-route="komentare"><span aria-hidden="true">✎</span> Komentáre</a>
         <a href="#/vyber" data-route="vyber"><span aria-hidden="true">★</span> Môj výber</a>
         <a href="#/odkazy" data-route="odkazy"><span aria-hidden="true">↗</span> Užitočné odkazy</a>
       </nav>
@@ -262,6 +263,30 @@
             </table>
           </div>
         </article>
+      </section>
+
+      <section id="view-komentare" class="view" data-view="komentare" hidden>
+        <div class="page-intro">
+          <div>
+            <span class="section-kicker">Hodnotenie projektov</span>
+            <h2>Skúsenosti a verejné signály</h2>
+          </div>
+          <p>Pracovný rebríček projektov s komentármi, dostupnosťou a odkazmi na zdroje.</p>
+        </div>
+
+        <article class="panel comments-methodology">
+          <div class="card-heading">
+            <div>
+              <span class="section-kicker">Ako vzniká skóre</span>
+              <h3>Metodika</h3>
+            </div>
+          </div>
+          <p id="comments-method-note"></p>
+          <div id="comments-methodology" class="comments-method-grid"></div>
+          <p id="comments-confidence-note" class="source-note"></p>
+        </article>
+
+        <div id="comments-rankings" class="comments-rankings"></div>
       </section>
 
       <section id="view-mapa" class="view map-view" data-view="mapa" hidden>

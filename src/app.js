@@ -3,6 +3,7 @@ const ROUTES = {
   ceny: "Vývoj cien",
   byty: "Ponuka bytov",
   mapa: "Mapa projektov",
+  komentare: "Komentáre",
   vyber: "Môj výber",
   odkazy: "Užitočné odkazy",
 };
@@ -45,6 +46,7 @@ const state = {
   apartmentColumns: [],
   sources: [],
   projects: [],
+  comments: {},
   apartmentMeta: {},
   priceMeta: {},
   filteredApartments: [],
@@ -153,11 +155,12 @@ async function loadData() {
   const error = document.querySelector("#global-error");
   error.hidden = true;
   try {
-    const [prices, apartments, sources, projects] = await Promise.all([
+    const [prices, apartments, sources, projects, comments] = await Promise.all([
       loadJson("./data/prices.json"),
       loadJson("./data/apartments.json"),
       loadJson("./data/sources.json"),
       loadJson("./data/projects.json"),
+      loadJson("./data/comments.json"),
     ]);
     state.prices = prices.rows || [];
     state.priceMeta = prices.meta || {};
@@ -170,6 +173,7 @@ async function loadData() {
     state.apartmentMeta = apartments.meta || {};
     state.sources = sources.rows || [];
     state.projects = projects.projects || [];
+    state.comments = comments;
     renderAll();
   } catch (caught) {
     console.error(caught);
@@ -447,6 +451,85 @@ function renderSources() {
   });
 }
 
+function renderComments() {
+  const data = state.comments;
+  if (!data?.projects?.length) return;
+  document.querySelector("#comments-method-note").textContent = data.methodology.intro;
+  document.querySelector("#comments-confidence-note").textContent = data.methodology.confidenceNote;
+
+  const methodology = document.querySelector("#comments-methodology");
+  methodology.replaceChildren();
+  data.methodology.weights.forEach((item) => {
+    const card = document.createElement("div");
+    const weight = document.createElement("strong");
+    weight.textContent = `${item.weight} %`;
+    const label = document.createElement("span");
+    label.textContent = item.label;
+    card.append(weight, label);
+    methodology.append(card);
+  });
+
+  const rankings = document.querySelector("#comments-rankings");
+  rankings.replaceChildren();
+  [[1, 15], [16, 30]].forEach(([from, to]) => {
+    const rows = data.projects.filter((item) => item.rank >= from && item.rank <= to);
+    const panel = document.createElement("article");
+    panel.className = "table-panel comments-panel";
+    const heading = document.createElement("h3");
+    heading.textContent = `Rebríček ${from}–${to}`;
+    const scroll = document.createElement("div");
+    scroll.className = "table-scroll";
+    scroll.tabIndex = 0;
+    const table = document.createElement("table");
+    table.className = "comments-table";
+    const head = document.createElement("thead");
+    head.innerHTML = "<tr><th>#</th><th>Projekt</th><th>Skóre</th><th>Voľné</th><th>Čo hovoria skúsenosti a hodnotenie</th></tr>";
+    const body = document.createElement("tbody");
+
+    rows.forEach((item) => {
+      const row = document.createElement("tr");
+      [item.rank, item.project].forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.append(cell);
+      });
+      const scoreCell = document.createElement("td");
+      const score = document.createElement("strong");
+      score.className = "comment-score";
+      score.textContent = decimal.format(item.score);
+      scoreCell.append(score);
+      const available = document.createElement("td");
+      available.textContent = integer.format(item.available);
+      const comment = document.createElement("td");
+      const copy = document.createElement("p");
+      copy.textContent = item.comment;
+      comment.append(copy);
+
+      if (item.links?.length) {
+        const links = document.createElement("div");
+        links.className = "comment-links";
+        item.links.forEach((source) => {
+          const url = safeUrl(source.url);
+          if (!url) return;
+          const link = document.createElement("a");
+          link.href = url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = `${source.label} ↗`;
+          links.append(link);
+        });
+        comment.append(links);
+      }
+      row.append(scoreCell, available, comment);
+      body.append(row);
+    });
+
+    table.append(head, body);
+    scroll.append(table);
+    panel.append(heading, scroll);
+    rankings.append(panel);
+  });
+}
 function createProjectPopup(project) {
   const popup = document.createElement("div");
   popup.className = "project-popup";
@@ -756,6 +839,7 @@ function renderAll() {
   renderCurated();
   renderSources();
   renderProjectMap();
+  renderComments();
   renderSeasonality();
   renderPriceCopy();
   setupApartmentFilters();

@@ -1,0 +1,389 @@
+{
+  "methodology": {
+    "intro": "Celkové skóre nie je iba priemer internetových komentárov.",
+    "weights": [
+      {
+        "weight": 35,
+        "label": "Architektúra, technický štandard a dispozície"
+      },
+      {
+        "weight": 25,
+        "label": "Lokalita, doprava a vybavenosť"
+      },
+      {
+        "weight": 20,
+        "label": "Developer, realizácia a správa"
+      },
+      {
+        "weight": 20,
+        "label": "Skúsenosti obyvateľov alebo verejné signály"
+      }
+    ],
+    "confidenceNote": "Pri rozostavaných projektoch bez obyvateľov znižujem istotu hodnotenia, nie automaticky kvalitu."
+  },
+  "projects": [
+    {
+      "rank": 1,
+      "project": "Vydrica",
+      "score": 9.2,
+      "available": 20,
+      "comment": "Unikátna poloha pod hradom, kvalitný verejný priestor a architektúra. Prevádzky sa postupne zapĺňajú a podnikatelia lokalitu hodnotia ako perspektívnu. Mínusom sú turistický ruch, vysoká cena a stále prebiehajúce dokončovanie štvrte.",
+      "links": [
+        {
+          "label": "Skúsenosti prevádzok vo Vydrici",
+          "url": "https://refresher.sk/188867-Ako-sa-dari-prevadzkam-vo-Vydrici-Majitelia-podnikov-prezradzaju-ci-su-spokojni-a-co-by-mohlo-pritiahnut-viac-ludi"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project": "ZWIRN 2",
+      "score": 9.1,
+      "available": 89,
+      "comment": "Jedna z najlepších kombinácií architektúry, vnútrobloku, električky a pešej dostupnosti centra. YIT má opakovanú rezidenčnú skúsenosť. Negatívom je rušnejšie okolie Trnavského mýta a incidenty súvisiace s blízkou drogovou scénou.",
+      "links": [
+        {
+          "label": "Skúsenosť obyvateľov Zwirnu",
+          "url": "https://www.forbes.sk/developer-yit-slovakia-a-rezidenti-zwirnu-riesili-incident-nedaleka-stvrt-je-znama-drogovou-scenou/"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project": "Bezručova Residence",
+      "score": 9.0,
+      "available": 1,
+      "comment": "Výnimočná rekonštrukcia, fenomenálna lokalita a veľmi dobré dispozície. Ubytovaní hostia oceňujú komfort a polohu; objavila sa však aj výhrada k slabšiemu odhlučneniu. Jedno overené ubytovanie má hodnotenie 9,5/10.",
+      "links": [
+        {
+          "label": "Recenzie Bezručovej",
+          "url": "https://www.booking.com/reviews/sk/hotel/bratislava-family-apartment-with-2-bedroom-terrase-and-free-parking.en-gb.html"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "project": "Florian Residence",
+      "score": 8.9,
+      "available": 32,
+      "comment": "Prémiový technický štandard: hliníkové okná, drevené podlahy, podlahové kúrenie, stropné chladenie a filtrácia vzduchu. Dobré spojenie centra so súkromným vnútroblokom. Zatiaľ je málo nezávislých dlhodobých recenzií.",
+      "links": [
+        {
+          "label": "Technický štandard",
+          "url": "https://florianresidence.sk/"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "project": "Eurovea Tower",
+      "score": 8.7,
+      "available": 2,
+      "comment": "Špičkové výhľady, nábrežie a všetky služby pod domom. Recenzie ubytovaných hostí chvália budovu a lokalitu, no spomínajú komplikovanejšie výťahy a hluk zo zariaďovania bytov. Nevýhodou sú vysoké mesačné náklady a veľký podiel investičných jednotiek.",
+      "links": [
+        {
+          "label": "Recenzie Eurovea Tower",
+          "url": "https://www.booking.com/reviews/sk/hotel/eurovea-tower-apt-1-danube-view-bratislava-ii.sk.html"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "project": "Sky Park Tower",
+      "score": 8.6,
+      "available": 38,
+      "comment": "Silná architektúra, park, služby a centrum. Obyvatelia a hostia oceňujú výhľady, garáž a polohu. Kritika smeruje k automobilovému charakteru okolia, hlučným cestám a rozdielom v kvalite realizácie niektorých starších veží.",
+      "links": [
+        {
+          "label": "Diskusia o bratislavských vežiach",
+          "url": "https://www.reddit.com/r/Slovakia/comments/1apst1m/veziaky_v_centre_bratislavy_sky_park_eurovea/"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "project": "Palais Esterházy",
+      "score": 8.6,
+      "available": 22,
+      "comment": "Mimoriadna historická adresa, podlahové kúrenie, stropné chladenie a iba približne 20 klasických bytov. Architektúra paláca je verejnosťou hodnotená veľmi pozitívne. Nevýhody: turistický ruch, komplikované parkovanie, servisované/komerčné jednotky a zatiaľ nulové skúsenosti obyvateľov.",
+      "links": [
+        {
+          "label": "Projekt Palais Esterházy",
+          "url": "https://www.palais-esterhazy.com/index-sk.html"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "project": "Hausberg",
+      "score": 8.5,
+      "available": 4,
+      "comment": "Prémiový menší projekt na hradnom kopci, súkromie, výhľady a nízky počet bytov. Slabšia pešia dostupnosť každodenných služieb, kopcovitý terén a veľmi vysoká cena. Verejných skúseností obyvateľov je málo.",
+      "links": []
+    },
+    {
+      "rank": 9,
+      "project": "K Železnej Studienke",
+      "score": 8.5,
+      "available": 14,
+      "comment": "Výborný prístup do prírody a komorná zástavba. Vhodné pre človeka, ktorý uprednostní pokoj pred mestským životom. Nevýhodou je závislosť od auta, dopravné špičky na Patrónke a slabšia pešia vybavenosť.",
+      "links": []
+    },
+    {
+      "rank": 10,
+      "project": "Záhradnícka",
+      "score": 8.4,
+      "available": 2,
+      "comment": "Komorný projekt v dobrej vnútromestskej polohe, udržateľné technológie a silné bankové financovanie. Nevýhodou je ruch Záhradníckej a fakt, že ide o jeden z prvých priamo predávaných rezidenčných projektov Immocapu.",
+      "links": [
+        {
+          "label": "Financovanie a developer",
+          "url": "https://immocap.sk/rezidencne-projekty-kvarter-a-zahradnicka-od-immocapu-dosiahli-dalsi-uspech-financovat-ich-bude-tatra-banka/"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "project": "Kvarter",
+      "score": 8.4,
+      "available": 26,
+      "comment": "Kvalitný mestský dom, átrium, nízka mierka a výborná dostupnosť. Urbanisticky je hodnotený ako vzorový projekt. Otáznikom je pavlač pred bytmi, súkromie, ruch Jégého a chýbajúce rezidentské skúsenosti.",
+      "links": [
+        {
+          "label": "Hodnotenie Kvarteru",
+          "url": "https://www.yimba.sk/polyfunkcny-objekt-jga/vzorovy-priklad-vnutromestskej-vystavby-prichadza-immocap-rozbieha-vystavbu-kvarteru"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "project": "Lofty Kominárska",
+      "score": 8.3,
+      "available": 16,
+      "comment": "Originálne priestory s výškou cez päť metrov, industriálna architektúra a dobrá širšia poloha. Verejnosť projekt zväčša chváli dizajnovo. Nevýhodou môžu byť drahé vykurovanie veľkého objemu, akustika otvorených loftov a komplikovanejšie zariadenie.",
+      "links": [
+        {
+          "label": "Profil Loftov",
+          "url": "https://www.forbes.sk/necakany-parking-ci-industrialny-chram-luxusny-projekt-sokuje-skrytymi-podzemnymi-priestormi/"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "project": "Nesto",
+      "score": 8.2,
+      "available": 69,
+      "comment": "Kvalitná nová štvrť, pokoj, parkovanie, zeleň a dobrá architektúra. Hostia hodnotia bývanie približne 8,5/10. Negatívne komentáre upozorňujú na okrajovú polohu, diaľnicu a zatiaľ nehotovú vybavenosť.",
+      "links": [
+        {
+          "label": "Recenzie Nesta",
+          "url": "https://www.booking.com/hotel/sk/nesto-brand-new-apartment-with-free-parking.sk.html"
+        },
+        {
+          "label": "diskusia o polohe",
+          "url": "https://www.reddit.com/r/Bratislava/comments/1s9i2gp/tips_and_tricks_pri_k%C3%BAbe_bytu_v_bratislava/"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "project": "Green Atrium",
+      "score": 8.1,
+      "available": 20,
+      "comment": "Certifikovaný pasívny koncept, vnútroblok a veľmi nízka energetická potreba. Odborná obhliadka projekt hodnotila pozitívne. Stále však chýba väčší objem dlhodobých nezávislých skúseností a čas ukáže náklady na servis technológií.",
+      "links": [
+        {
+          "label": "Odborné hodnotenie",
+          "url": "https://www.asb.sk/development/kolaudator-hodnoti-green-atrium"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "project": "Liget",
+      "score": 8.0,
+      "available": 13,
+      "comment": "Prémiový komorný projekt pri Sade Janka Kráľa, dobrý štandard a rýchla dostupnosť centra. Rizikom je doprava okolo Einsteinovej a výstavba ďalších projektov v území. Málo verejných komentárov obyvateľov.",
+      "links": []
+    },
+    {
+      "rank": 16,
+      "project": "Mýtna 37",
+      "score": 8.0,
+      "available": 29,
+      "comment": "Výborná dostupnosť električiek, centra a Račianskeho mýta. Mestotvorný projekt, ale ešte bez obyvateľov. Najväčším rizikom je hluk Mýtnej, dopravy a električiek; orientácia bytu bude rozhodujúca.",
+      "links": []
+    },
+    {
+      "rank": 17,
+      "project": "Millhaus",
+      "score": 7.9,
+      "available": 16,
+      "comment": "Dobrá poloha medzi Nivami a Ružinovom, moderný výškový projekt a skúsený Immocap. Slabšou stránkou je dnešný kancelársko-dopravný charakter Mlynských nív a chýbajúce rezidentské skúsenosti.",
+      "links": []
+    },
+    {
+      "rank": 18,
+      "project": "Downtown Yards",
+      "score": 7.8,
+      "available": 155,
+      "comment": "Silná poloha, park, služby a potenciál rastúceho downtownu. Veľký projekt však znamená dlhú výstavbu, veľa investorov a vyššiu anonymitu. Kritika bratislavského downtownu sa týka hlučných ciest a slabšej ľudskej mierky.",
+      "links": [
+        {
+          "label": "Diskusia o downtowne",
+          "url": "https://www.reddit.com/r/Slovakia/comments/17vofsp/co_si_mysl%C3%ADte_o_bratislavskom_downtowne/"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "project": "Matadorka Living",
+      "score": 7.7,
+      "available": 71,
+      "comment": "Industriálny charakter, plánované služby a dobré napojenie Petržalky. Projekt ešte nemá relevantné dlhodobé recenzie. Krátkodobé ubytovanie v existujúcej Matadorke má približne 8,3/10, ale niektoré sťažnosti na čistotu a vstup sa týkajú prevádzkovateľa apartmánu, nie stavby.",
+      "links": [
+        {
+          "label": "Príklad recenzií",
+          "url": "https://www.booking.com/reviews/sk/hotel/bnb-matadorka-comfort-suite.html"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "project": "Bory Bývanie",
+      "score": 7.6,
+      "available": 52,
+      "comment": "Obyvatelia chvália pokoj, odhlučnenie, nemocnicu, Bory Mall a cyklotrasu; jedna obyvateľka uvádza, že dva roky prakticky nepočula susedov. Negatívom je okrajová poloha, ďalšia výstavba a väčšia závislosť od auta.",
+      "links": [
+        {
+          "label": "Skúsenosti s lokalitou Bory",
+          "url": "https://www.reddit.com/r/Bratislava/comments/1cqx7nn/kde_by_ste_b%C3%BDvali_keby%C5%BEe_pracujete_iba_z_domu/"
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "project": "Kramáre Living",
+      "score": 7.6,
+      "available": 10,
+      "comment": "Dobré spojenie mesta a prírody, menší projekt a potenciálne výhľady. Nevýhodou je doprava na Kramároch, sanitky, kopcovitosť a problematické parkovanie. Projekt zatiaľ nemá rezidentské recenzie.",
+      "links": []
+    },
+    {
+      "rank": 22,
+      "project": "Pri Suchom Mlyne",
+      "score": 7.5,
+      "available": 11,
+      "comment": "Len 16 jednotiek, rodinné prostredie a blízkosť lesa. Veľmi vhodné pre pokojné bývanie. Slabšia vybavenosť pešo, úzke komunikácie a riziko dopravného hluku podľa konkrétnej orientácie.",
+      "links": []
+    },
+    {
+      "rank": 23,
+      "project": "Novanta Prievoz",
+      "score": 7.4,
+      "available": 7,
+      "comment": "Malý uzavretý projekt v zeleni medzi rodinnými domami. Dobré súkromie, ale slabšie MHD, dopravné zápchy Prievozu a možné pachy zo Slovnaftu. Miestni uvádzajú, že zápach sa objaví iba občas, iným však prekáža výrazne.",
+      "links": [
+        {
+          "label": "Skúsenosti s širšou lokalitou",
+          "url": "https://www.reddit.com/r/Bratislava/comments/1u51cw3/byvanie_v_podunajskych_biskupiciach_oplati_sa/"
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "project": "Slnečnice – Nové viladomy",
+      "score": 7.3,
+      "available": 174,
+      "comment": "Rodinné prostredie, nová električka, hrádza a postupne rastúce služby. Recenzie sú veľmi rozdielne: niektorí susedov nepočujú vôbec, iní počujú budíky, rozhovory či digestor. Opakujú sa témy parkovania a pokračujúcej výstavby.",
+      "links": [
+        {
+          "label": "Rozsiahla diskusia obyvateľov",
+          "url": "https://www.reddit.com/r/Slovakia/comments/1qwwyez/slnecnice_byvanie_skusenosti/"
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "project": "Nový Ružinov",
+      "score": 7.2,
+      "available": 20,
+      "comment": "Jeden obyvateľ s päťročnou skúsenosťou hodnotí kvalitu bytov veľmi dobre a projekt preferuje pred viacerými inými novostavbami. Negatíva: slabá MHD, izolovanosť, auto takmer nutnosťou a hlásené vykrádanie.",
+      "links": [
+        {
+          "label": "Skúsenosti obyvateľov",
+          "url": "https://www.reddit.com/r/Bratislava/comments/1mk4rpb/byvanie_nov%C3%BD_ru%C5%BEinov/"
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "project": "Čerešne",
+      "score": 7.1,
+      "available": 88,
+      "comment": "Pozitívne recenzie chvália prostredie, Kaufland, prírodu, MHD a v niektorých blokoch dobré odhlučnenie. Negatívne skúsenosti uvádzajú problémy s kúrením, tlakom alebo teplou vodou, správou a hlukom stavby. Výsledok výrazne závisí od konkrétnej etapy.",
+      "links": [
+        {
+          "label": "Zmiešané skúsenosti",
+          "url": "https://www.reddit.com/r/Slovakia/comments/1n5tqt5/ceresne_byvanie_bratislava/"
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "project": "Nuppu",
+      "score": 6.9,
+      "available": 51,
+      "comment": "YIT a proces odovzdania bývajú hodnotené pozitívne; odborná kontrola jednej etapy našla iba 14 chýb, čo označila za dobrý výsledok. Obyvatelia však opakovane spomínajú diaľnicu, prenos hluku, občas vytopené garáže, pach z reštaurácie a veľa prenajímaných bytov.",
+      "links": [
+        {
+          "label": "Skúsenosti Nuppu",
+          "url": "https://www.reddit.com/r/Slovakia/comments/1ni981j/byt_nuppu_bratislava/"
+        },
+        {
+          "label": "odborná kontrola",
+          "url": "https://www.kvalitnebyvanie.sk/stavbarske-matine?id=59"
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "project": "Galvania Rezidencie",
+      "score": 6.8,
+      "available": 15,
+      "comment": "Privátny park, Avion a dobrá predajnosť. Miestne skúsenosti hovoria, že byty ďalej od Galvaniho môžu byť pokojné a trojsklá cestu dobre tlmia. Kritika sa týka parkovania, komerčno-priemyselného prostredia, ubytovní a základnejšieho štandardu.",
+      "links": [
+        {
+          "label": "Skúsenosti s Galvaniho ulicou",
+          "url": "https://www.reddit.com/r/Slovakia/comments/1uox1fq/skusenosti_s_galvaniho_ulicou_v_ba/"
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "project": "Jašik Ružinov",
+      "score": 6.6,
+      "available": 31,
+      "comment": "Výborná vybavenosť, električka a centrum Ružinova. Výrazné mínus predstavuje história pôvodného projektu Prima Park: odpor miestnych pre dopravu a parkovanie a problém prvej etapy, kde rodiny určitý čas bývali bez platnej kolaudácie.",
+      "links": [
+        {
+          "label": "Problém Prima Parku I",
+          "url": "https://www.trend.sk/byvanie/neskolaudovanom-prima-parku-byva-48-rodin-kupili-byt-ale-predat-neda"
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "project": "Slnečná Strana",
+      "score": 6.5,
+      "available": 47,
+      "comment": "Na papieri výborný štandard: rekuperácia, podlahové kúrenie a chladenie, tienenie, tepelné čerpadlá, bazén a zelená strecha. Posledné miesto nie je pre zlú deklarovanú kvalitu, ale pre najväčšiu neistotu: žiadne nezávislé recenzie, nehotová obytná lokalita a riziko vysokých servisných nákladov bazéna a technológií.",
+      "links": [
+        {
+          "label": "Vybavenie projektu",
+          "url": "https://slnecnastrana.sk/vybavenie-objektu/"
+        }
+      ]
+    }
+  ]
+}
