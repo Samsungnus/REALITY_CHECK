@@ -1108,24 +1108,41 @@ td a:hover {
 }
 
 .map-button:hover { border-color: var(--mint); background: var(--mint-soft); }
-.project-marker-wrap { background: none; border: 0; }
+.project-marker-wrap {
+  overflow: visible !important;
+  background: none;
+  border: 0;
+}
 
-.project-marker {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 3px solid white;
-  border-radius: 50% 50% 50% 8px;
+.project-marker-label {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: max-content;
+  max-width: 150px;
+  padding: 7px 10px;
+  border: 2px solid white;
+  border-radius: 11px;
   background: var(--navy);
   color: white;
   box-shadow: 0 5px 15px rgba(13, 42, 48, 0.34);
-  transform: rotate(-45deg);
+  font: 800 11px/1.15 "Manrope", sans-serif;
+  text-align: center;
+  white-space: normal;
+  transform: translateX(-50%);
 }
 
-.project-marker b {
-  font: 800 11px/1 "Manrope", sans-serif;
-  transform: rotate(45deg);
+.project-marker-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  background: var(--navy);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .project-popup strong,

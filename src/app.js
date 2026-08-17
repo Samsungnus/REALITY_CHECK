@@ -491,13 +491,16 @@ function renderProjectMap() {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> prispievatelia',
     }).addTo(projectMap);
 
-    state.projects.forEach((project, index) => {
+    state.projects.forEach((project) => {
+      const markerLabel = document.createElement("span");
+      markerLabel.className = "project-marker-label";
+      markerLabel.textContent = project.name;
       const icon = window.L.divIcon({
         className: "project-marker-wrap",
-        html: `<span class="project-marker"><b>${index + 1}</b></span>`,
-        iconSize: [34, 42],
-        iconAnchor: [17, 40],
-        popupAnchor: [0, -36],
+        html: markerLabel.outerHTML,
+        iconSize: [1, 1],
+        iconAnchor: [0, 0],
+        popupAnchor: [0, -42],
       });
       window.L.marker([project.lat, project.lng], { icon, title: project.name })
         .addTo(projectMap)
