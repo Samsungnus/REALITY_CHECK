@@ -15,6 +15,7 @@
     { "name": "NUPPU", "address": "Hraničná / Mlynské nivy, Ružinov", "lat": 48.142774, "lng": 17.159752, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu?tab=projects" },
     { "name": "ZWIRN", "address": "Košická / Svätoplukova, Ružinov", "lat": 48.147401, "lng": 17.131361, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/zwirn?tab=projects" },
     { "name": "Ister Tower", "address": "Chalupkova / Landererova, downtown", "lat": 48.142877, "lng": 17.127842, "developerUrl": "https://istertower.com/" },
-    { "name": "Čerešne", "address": "Polianky, Dúbravka", "lat": 48.177488, "lng": 17.054707, "developerUrl": "https://www.ceresne.sk/" }
+    { "name": "Čerešne", "address": "Polianky, Dúbravka", "lat": 48.177488, "lng": 17.054707, "developerUrl": "https://www.ceresne.sk/" },
+    { "name": "Štedrá Residence", "address": "Štedrá, Ružinov", "lat": 48.153312, "lng": 17.177475, "developerUrl": "https://www.stedra.sk/" }
   ]
 }
