@@ -2,6 +2,7 @@ const ROUTES = {
   prehlad: "Prehľad trhu",
   ceny: "Vývoj cien",
   byty: "Ponuka bytov",
+  mapa: "Mapa projektov",
   vyber: "Môj výber",
   odkazy: "Užitočné odkazy",
 };
@@ -43,6 +44,7 @@ const state = {
   apartments: [],
   apartmentColumns: [],
   sources: [],
+  projects: [],
   apartmentMeta: {},
   priceMeta: {},
   filteredApartments: [],
@@ -65,6 +67,8 @@ const PRIORITY_APARTMENT_COLUMNS = [
 ];
 
 const chartRegistry = new Map();
+let projectMap = null;
+const RUZINOV_VIEW = { center: [48.1538, 17.157], zoom: 13 };
 const euro = new Intl.NumberFormat("sk-SK", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 0 });
 const decimal = new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 1 });
@@ -131,8 +135,12 @@ function activateRoute() {
   });
   document.querySelector("#page-title").textContent = ROUTES[route];
   document.title = `${ROUTES[route]} · Bratislavské bývanie`;
+  document.body.dataset.route = route;
   window.scrollTo({ top: 0, behavior: "instant" });
-  requestAnimationFrame(redrawVisibleCharts);
+  requestAnimationFrame(() => {
+    redrawVisibleCharts();
+    if (route === "mapa") renderProjectMap();
+  });
 }
 
 async function loadJson(path) {
@@ -145,10 +153,11 @@ async function loadData() {
   const error = document.querySelector("#global-error");
   error.hidden = true;
   try {
-    const [prices, apartments, sources] = await Promise.all([
+    const [prices, apartments, sources, projects] = await Promise.all([
       loadJson("./data/prices.json"),
       loadJson("./data/apartments.json"),
       loadJson("./data/sources.json"),
+      loadJson("./data/projects.json"),
     ]);
     state.prices = prices.rows || [];
     state.priceMeta = prices.meta || {};
@@ -160,6 +169,7 @@ async function loadData() {
     ];
     state.apartmentMeta = apartments.meta || {};
     state.sources = sources.rows || [];
+    state.projects = projects.projects || [];
     renderAll();
   } catch (caught) {
     console.error(caught);
@@ -437,6 +447,67 @@ function renderSources() {
   });
 }
 
+function createProjectPopup(project) {
+  const popup = document.createElement("div");
+  popup.className = "project-popup";
+
+  const title = document.createElement("strong");
+  title.textContent = project.name;
+  const address = document.createElement("span");
+  address.textContent = project.address;
+
+  const links = document.createElement("div");
+  links.className = "project-popup-links";
+  const website = document.createElement("a");
+  website.href = safeUrl(project.developerUrl) || "#";
+  website.target = "_blank";
+  website.rel = "noopener noreferrer";
+  website.textContent = "Stránka projektu ↗";
+
+  const directions = document.createElement("a");
+  directions.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${project.lat},${project.lng}`)}`;
+  directions.target = "_blank";
+  directions.rel = "noopener noreferrer";
+  directions.textContent = "Navigovať ↗";
+  links.append(website, directions);
+  popup.append(title, address, links);
+  return popup;
+}
+
+function renderProjectMap() {
+  const container = document.querySelector("#projects-map");
+  if (!container || !state.projects.length) return;
+  document.querySelector("#map-project-count").textContent = `${integer.format(state.projects.length)} projektov`;
+
+  if (!window.L) {
+    container.textContent = "Mapu sa nepodarilo načítať. Skontrolujte internetové pripojenie a obnovte stránku.";
+    return;
+  }
+
+  if (!projectMap) {
+    projectMap = window.L.map(container, { zoomControl: true }).setView(RUZINOV_VIEW.center, RUZINOV_VIEW.zoom);
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> prispievatelia',
+    }).addTo(projectMap);
+
+    state.projects.forEach((project, index) => {
+      const icon = window.L.divIcon({
+        className: "project-marker-wrap",
+        html: `<span class="project-marker"><b>${index + 1}</b></span>`,
+        iconSize: [34, 42],
+        iconAnchor: [17, 40],
+        popupAnchor: [0, -36],
+      });
+      window.L.marker([project.lat, project.lng], { icon, title: project.name })
+        .addTo(projectMap)
+        .bindPopup(createProjectPopup(project), { minWidth: 220 });
+    });
+  }
+
+  window.setTimeout(() => projectMap.invalidateSize(), 0);
+}
+
 function renderSeasonality() {
   const container = document.querySelector("#seasonality-chart");
   container.replaceChildren();
@@ -638,6 +709,15 @@ function renderCharts() {
 function bindControls() {
   window.addEventListener("hashchange", activateRoute);
   document.querySelector("#refresh-button").addEventListener("click", () => location.reload());
+  document.querySelector("#map-ruzinov").addEventListener("click", () => {
+    renderProjectMap();
+    projectMap?.setView(RUZINOV_VIEW.center, RUZINOV_VIEW.zoom);
+  });
+  document.querySelector("#map-all").addEventListener("click", () => {
+    renderProjectMap();
+    if (!projectMap || !state.projects.length) return;
+    projectMap.fitBounds(state.projects.map((project) => [project.lat, project.lng]), { padding: [34, 34] });
+  });
   ["#filter-search", "#filter-project", "#filter-status", "#filter-rooms"].forEach((selector) => {
     const element = document.querySelector(selector);
     element.addEventListener(element.tagName === "INPUT" ? "input" : "change", () => {
@@ -672,6 +752,7 @@ function renderAll() {
   renderOverview();
   renderCurated();
   renderSources();
+  renderProjectMap();
   renderSeasonality();
   renderPriceCopy();
   setupApartmentFilters();

@@ -1,0 +1,20 @@
+{
+  "projects": [
+    { "name": "Chalupkova", "address": "Chalupkova / Košická / Mlynské nivy", "lat": 48.144914, "lng": 17.130135, "developerUrl": "https://chalupkova.sk/" },
+    { "name": "ALVY", "address": "Prievozská, Ružinov", "lat": 48.14814, "lng": 17.14861, "developerUrl": "https://www.alvy.sk/" },
+    { "name": "Slnečná Strana", "address": "Zóna Galvania, Ružinov", "lat": 48.16628, "lng": 17.17339, "developerUrl": "https://slnecnastrana.sk/" },
+    { "name": "Zváračák", "address": "Račianska 75, Nové Mesto", "lat": 48.169545, "lng": 17.126806, "developerUrl": "https://zvaracak.sk/" },
+    { "name": "Milrose", "address": "Miletičova, Ružová dolina", "lat": 48.154427, "lng": 17.138244, "developerUrl": "https://milrose.sk/" },
+    { "name": "BAYA", "address": "Bajkalská / Prešovská, Ružinov", "lat": 48.1534, "lng": 17.1381, "developerUrl": "https://www.baya.btk.sk/sk" },
+    { "name": "Jašik Ružinov", "address": "Jašíkova, Ružinov", "lat": 48.155908, "lng": 17.166455, "developerUrl": "https://jasikruzinov.sk/" },
+    { "name": "Mýtna 37", "address": "Mýtna 37 / Šancová, Staré Mesto", "lat": 48.157327, "lng": 17.119255, "developerUrl": "https://www.mytna37.sk/" },
+    { "name": "Tíšiny", "address": "Zátišie, Nové Mesto", "lat": 48.17323, "lng": 17.1398, "developerUrl": "https://www.tisiny.sk/" },
+    { "name": "Kvarter", "address": "Jégého, Ružinov", "lat": 48.158024, "lng": 17.135249, "developerUrl": "https://kvarter-living.sk/" },
+    { "name": "PARQ", "address": "Zátišie, Nové Mesto", "lat": 48.172792, "lng": 17.141043, "developerUrl": "https://parq.sk/" },
+    { "name": "Galvania Rezidencie", "address": "Galvaniho, Ružinov", "lat": 48.164522, "lng": 17.173136, "developerUrl": "https://www.galvania.sk/byty/" },
+    { "name": "NUPPU", "address": "Hraničná / Mlynské nivy, Ružinov", "lat": 48.142774, "lng": 17.159752, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu?tab=projects" },
+    { "name": "ZWIRN", "address": "Košická / Svätoplukova, Ružinov", "lat": 48.147401, "lng": 17.131361, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/zwirn?tab=projects" },
+    { "name": "Ister Tower", "address": "Chalupkova / Landererova, downtown", "lat": 48.142877, "lng": 17.127842, "developerUrl": "https://istertower.com/" },
+    { "name": "Čerešne", "address": "Polianky, Dúbravka", "lat": 48.177488, "lng": 17.054707, "developerUrl": "https://www.ceresne.sk/" }
+  ]
+}

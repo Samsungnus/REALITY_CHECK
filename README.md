@@ -13,6 +13,10 @@ Cenový Excel musí naďalej obsahovať list `Data` a developerský Excel list `
 
 Po odoslaní zmeny do vetvy `main` GitHub automaticky spracuje Excel súbory a zverejní novú verziu stránky.
 
+## Aktualizácia mapy projektov
+
+Projekty na bezplatnej OpenStreetMap mape sú uložené v `src/data/projects.json`. Každý záznam obsahuje názov, adresu, súradnice `lat` a `lng` a odkaz `developerUrl`. Po úprave tohto súboru a odoslaní do vetvy `main` sa mapa automaticky zverejní spolu so stránkou.
+
 ## Prvé publikovanie
 
 1. Vytvorte nový repozitár na GitHube.

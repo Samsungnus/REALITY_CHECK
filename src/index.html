@@ -24,6 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -42,6 +43,7 @@
         <a href="#/prehlad" data-route="prehlad"><span aria-hidden="true">⌂</span> Prehľad</a>
         <a href="#/ceny" data-route="ceny"><span aria-hidden="true">↗</span> Vývoj cien</a>
         <a href="#/byty" data-route="byty"><span aria-hidden="true">▦</span> Ponuka bytov</a>
+        <a href="#/mapa" data-route="mapa"><span aria-hidden="true">⌖</span> Mapa projektov</a>
         <a href="#/vyber" data-route="vyber"><span aria-hidden="true">★</span> Môj výber</a>
         <a href="#/odkazy" data-route="odkazy"><span aria-hidden="true">↗</span> Užitočné odkazy</a>
       </nav>
@@ -262,6 +264,20 @@
         </article>
       </section>
 
+      <section id="view-mapa" class="view map-view" data-view="mapa" hidden>
+        <div id="projects-map" class="projects-map" aria-label="Mapa developerských projektov v Bratislave"></div>
+        <div class="map-toolbar" aria-label="Ovládanie mapy">
+          <div>
+            <span class="section-kicker">Novostavby</span>
+            <strong id="map-project-count">Načítavam…</strong>
+          </div>
+          <div class="map-toolbar-actions">
+            <button id="map-ruzinov" class="map-button" type="button">Ružinov</button>
+            <button id="map-all" class="map-button" type="button">Všetky</button>
+          </div>
+        </div>
+      </section>
+
       <section id="view-odkazy" class="view" data-view="odkazy" hidden>
         <div class="page-intro">
           <div>
@@ -299,6 +315,7 @@
       </footer>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="./app.js"></script>
   </body>
 </html>
