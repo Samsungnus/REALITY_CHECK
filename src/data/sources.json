@@ -2,8 +2,8 @@
   "meta": {
     "sourceFile": "bratislava_ceny_bytov_2020_2026.xlsx",
     "sheet": "Zdroje",
-    "generatedAt": "2026-08-20T12:29:29+00:00",
-    "rowCount": 17
+    "generatedAt": "2026-08-20T14:34:27+00:00",
+    "rowCount": 18
   },
   "rows": [
     {
@@ -124,6 +124,13 @@
       "Hodnota / informácia": "4 316 €/m²",
       "Použitie": "Kontrola úrovne modelu",
       "URL": "https://www.realitnaunia.sk/realitny-barometer"
+    },
+    {
+      "Segment": "Developeri",
+      "Obdobie": "aktuálne",
+      "Hodnota / informácia": "Podmienky kúpy u sledovaných developerov",
+      "Použitie": "Parkovanie, kobky, spoločné priestory, financovanie a kolaudácia",
+      "URL": "https://github.com/Samsungnus/REALITY_CHECK/blob/main/source-data/Developers.xlsx"
     }
   ]
 }

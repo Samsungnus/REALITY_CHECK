@@ -14,6 +14,8 @@ OUTPUT_DIR = ROOT / "src" / "data"
 
 PRICE_FILE = SOURCE_DIR / "bratislava_ceny_bytov_2020_2026.xlsx"
 APARTMENT_FILE = SOURCE_DIR / "developerske-projekty.xlsx"
+DEVELOPER_FILE = SOURCE_DIR / "Developers.xlsx"
+DEVELOPER_SOURCE_URL = "https://github.com/Samsungnus/REALITY_CHECK/blob/main/source-data/Developers.xlsx"
 
 DEVELOPER_FALLBACKS = {
     "Slnečná Strana": "Slnečná Strana",
@@ -66,7 +68,7 @@ def write_json(filename: str, payload: dict[str, Any]) -> None:
 
 
 def main() -> None:
-    for path in (PRICE_FILE, APARTMENT_FILE):
+    for path in (PRICE_FILE, APARTMENT_FILE, DEVELOPER_FILE):
         if not path.exists():
             raise FileNotFoundError(f"Chýba zdrojový súbor: {path}")
 
@@ -98,6 +100,15 @@ def main() -> None:
         _, source_rows = extract_table(
             price_workbook["Zdroje"], {"Segment", "Obdobie", "URL"}
         )
+    source_rows.append(
+        {
+            "Segment": "Developeri",
+            "Obdobie": "aktuálne",
+            "Hodnota / informácia": "Podmienky kúpy u sledovaných developerov",
+            "Použitie": "Parkovanie, kobky, spoločné priestory, financovanie a kolaudácia",
+            "URL": DEVELOPER_SOURCE_URL,
+        }
+    )
     write_json(
         "sources.json",
         {
@@ -141,9 +152,95 @@ def main() -> None:
     )
     apartment_workbook.close()
 
+    developer_workbook = openpyxl.load_workbook(
+        DEVELOPER_FILE, data_only=True, read_only=True
+    )
+    if "Projekty" not in developer_workbook.sheetnames:
+        raise ValueError("Excel developerov musí obsahovať list 'Projekty'.")
+    _, developer_project_rows = extract_table(
+        developer_workbook["Projekty"],
+        {"Developer", "Názov projektu", "Parkovanie", "Zdroj / overenie"},
+    )
+
+    tracked_projects = {
+        str(row.get("Projekt") or "").strip(): str(row.get("Developer") or "").strip()
+        for row in apartment_rows
+        if str(row.get("Projekt") or "").strip()
+    }
+    detail_fields = {
+        "parkingRequired": "Parkovanie",
+        "parkingPrice": "Cena parkovania",
+        "storageRequired": "Kobka",
+        "storagePrice": "Cena kobky",
+        "commonSpace": "Spoločný priestor",
+        "bikeSpace": "Priestor na bicykle",
+        "financing": "Financovanie",
+        "largePaymentWhen": "Vyššia časť sa platí",
+        "completion": "Kolaudácia",
+    }
+    project_details: dict[str, dict[str, Any]] = {}
+    grouped_details: dict[str, list[tuple[str, dict[str, Any]]]] = {}
+
+    for source_row in developer_project_rows:
+        project = str(source_row.get("Názov projektu") or "").strip()
+        display_developer = tracked_projects.get(project)
+        if not project or not display_developer:
+            continue
+        details = {
+            target: source_row.get(source)
+            for target, source in detail_fields.items()
+        }
+        raw_sources = str(source_row.get("Zdroj / overenie") or "")
+        details["sourceUrls"] = [
+            url.strip() for url in raw_sources.split("|") if url.strip()
+        ]
+        project_details[project] = details
+        grouped_details.setdefault(display_developer, []).append((project, details))
+
+    developer_details: dict[str, dict[str, Any]] = {}
+    for developer, entries in grouped_details.items():
+        combined: dict[str, Any] = {}
+        for field in detail_fields:
+            if len(entries) == 1:
+                combined[field] = entries[0][1].get(field)
+            else:
+                combined[field] = " | ".join(
+                    f"{project}: {details.get(field) or 'Nezistené'}"
+                    for project, details in entries
+                )
+        combined["sourceUrls"] = list(
+            dict.fromkeys(
+                url
+                for _, details in entries
+                for url in details.get("sourceUrls", [])
+            )
+        )
+        combined["note"] = (
+            "Podmienky sú uvedené osobitne podľa projektu."
+            if len(entries) > 1
+            else None
+        )
+        developer_details[developer] = combined
+
+    write_json(
+        "developers.json",
+        {
+            "meta": {
+                "sourceFile": DEVELOPER_FILE.name,
+                "sheet": "Projekty",
+                "generatedAt": generated_at,
+                "rowCount": len(project_details),
+            },
+            "developers": developer_details,
+            "projects": project_details,
+        },
+    )
+    developer_workbook.close()
+
     print(
         f"Pripravené: {len(price_rows)} cenových záznamov, "
-        f"{len(apartment_rows)} bytov a {len(source_rows)} zdrojov."
+        f"{len(apartment_rows)} bytov, {len(source_rows)} zdrojov a "
+        f"{len(project_details)} projektových podmienok."
     )
 
 

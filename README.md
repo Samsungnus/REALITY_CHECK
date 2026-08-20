@@ -8,8 +8,9 @@ V priečinku `source-data` nahraďte súbory novšími verziami, ale zachovajte 
 
 - `bratislava_ceny_bytov_2020_2026.xlsx`
 - `developerske-projekty.xlsx`
+- `Developers.xlsx`
 
-Cenový Excel musí naďalej obsahovať list `Data` a developerský Excel list `Byty`. Riadkov môže pribudnúť ľubovoľne. Hlavičky sa vyhľadávajú podľa názvov, takže nemusia zostať na presne rovnakom riadku.
+Cenový Excel musí naďalej obsahovať list `Data`, developerský Excel list `Byty` a Excel `Developers.xlsx` list `Projekty`. Riadkov môže pribudnúť ľubovoľne. Hlavičky sa vyhľadávajú podľa názvov, takže nemusia zostať na presne rovnakom riadku.
 
 Po odoslaní zmeny do vetvy `main` GitHub automaticky spracuje Excel súbory a zverejní novú verziu stránky.
 

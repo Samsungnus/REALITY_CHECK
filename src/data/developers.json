@@ -1,52 +1,327 @@
 {
+  "meta": {
+    "sourceFile": "Developers.xlsx",
+    "sheet": "Projekty",
+    "generatedAt": "2026-08-20T14:34:27+00:00",
+    "rowCount": 11
+  },
   "developers": {
-    "CRESCO Real Estate": {
-      "parkingRequired": null,
-      "parkingPrice": null,
-      "storageRequired": null,
-      "storagePrice": null,
-      "commonSpace": null,
-      "bikeSpace": null,
-      "financing": null,
-      "largePaymentWhen": null,
-      "completion": null,
+    "Alto Real Estate": {
+      "parkingRequired": "Pridelené ku každému bytu, dokupuje sa",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Pridelená ku každému bytu, dokupuje sa",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Nezistené",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Nezistené",
+      "sourceUrls": [
+        "https://www.alvy.sk/cennik"
+      ],
       "note": null
     },
-    "Immocap": {
-      "parkingRequired": null,
-      "parkingPrice": null,
-      "storageRequired": null,
-      "storagePrice": null,
-      "commonSpace": null,
-      "bikeSpace": null,
-      "financing": null,
-      "largePaymentWhen": null,
-      "completion": null,
+    "BTK": {
+      "parkingRequired": "Voliteľné, projekt ráta s miestom ku každému bytu",
+      "parkingPrice": "Od 34 000 €",
+      "storageRequired": "Voliteľná pivničná kobka",
+      "storagePrice": "Od 13 284 €",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Hypotéka cez partnerského špecialistu Generali",
+      "largePaymentWhen": "Nezistené",
+      "completion": "2027",
+      "sourceUrls": [
+        "https://www.baya.btk.sk/sk/o-projekte"
+      ],
       "note": null
     },
-    "Slnečná Strana": {
-      "parkingRequired": null,
-      "parkingPrice": null,
-      "storageRequired": null,
-      "storagePrice": null,
-      "commonSpace": null,
-      "bikeSpace": null,
-      "financing": null,
-      "largePaymentWhen": null,
-      "completion": null,
+    "JTRE": {
+      "parkingRequired": "Dostatok parkovacích miest",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Nezistené",
+      "storagePrice": "Nezistené",
+      "commonSpace": "6 100 m² zelene, vnútorné dvory a komunitný klub",
+      "bikeSpace": "Cyklotrasa a cyklostojiská v každom vchode",
+      "financing": "Hypotekárny servis GEPARD FINANCE",
+      "largePaymentWhen": "Nezistené",
+      "completion": "1. etapa 2026–2027, podľa bytu 2026/2027",
+      "sourceUrls": [
+        "https://d-y.sk/"
+      ],
       "note": null
     },
     "Tatra Real": {
-      "parkingRequired": null,
-      "parkingPrice": null,
-      "storageRequired": null,
-      "storagePrice": null,
-      "commonSpace": null,
-      "bikeSpace": null,
-      "financing": null,
-      "largePaymentWhen": null,
-      "completion": null,
+      "parkingRequired": "Voliteľné podzemné státie",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Voliteľná pivničná kobka",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Súkromný park 6 000 m², oddychové zóny, ihrisko a fitness",
+      "bikeSpace": "Nezistené",
+      "financing": "20/80",
+      "largePaymentWhen": "80 % po kolaudácii a zápise bytov na list vlastníctva",
+      "completion": "Blok C 4Q 2026–1Q 2027, blok A 3Q 2027–1Q 2028",
+      "sourceUrls": [
+        "https://www.galvania.sk/o-projekte/"
+      ],
       "note": null
+    },
+    "CRESCO Real Estate": {
+      "parkingRequired": "Jašik Ružinov: Podzemné aj vonkajšie státia | Tíšiny: Vnútorné aj vonkajšie miesta",
+      "parkingPrice": "Jašik Ružinov: Nezistené | Tíšiny: Nezistené",
+      "storageRequired": "Jašik Ružinov: Podľa konkrétnej jednotky | Tíšiny: Nezistené",
+      "storagePrice": "Jašik Ružinov: Nezistené | Tíšiny: Nezistené",
+      "commonSpace": "Jašik Ružinov: Zelený vnútroblok | Tíšiny: Nezistené",
+      "bikeSpace": "Jašik Ružinov: Nezistené | Tíšiny: Nezistené",
+      "financing": "Jašik Ružinov: Možná hypotéka, podmienky podľa jednotky a fázy | Tíšiny: 20/80",
+      "largePaymentWhen": "Jašik Ružinov: Podľa dohodnutého harmonogramu | Tíšiny: 80 % po právoplatnosti kolaudačného rozhodnutia",
+      "completion": "Jašik Ružinov: Nezistené | Tíšiny: Žiadosť 4Q 2028, odovzdanie 2Q 2029",
+      "sourceUrls": [
+        "https://jasikruzinov.sk/o-projekte",
+        "https://jasikruzinov.sk/faq",
+        "https://www.tisiny.sk/"
+      ],
+      "note": "Podmienky sú uvedené osobitne podľa projektu."
+    },
+    "Immocap": {
+      "parkingRequired": "Voliteľné veľkometrážne státie ku každému bytu/apartmánu",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Voliteľný pivničný priestor ku každému bytu/apartmánu",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Dizajnové átrium, vnútorná pavlač a komunitná strešná terasa",
+      "bikeSpace": "Cykloparkovisko, servisovňa a umyvárka",
+      "financing": "Bez inflačnej doložky, pomoc finančných expertov",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Jar 2027",
+      "sourceUrls": [
+        "https://kvarter-living.sk/benefity"
+      ],
+      "note": null
+    },
+    "INTRADE Group": {
+      "parkingRequired": "440 podzemných miest pre 301 bytov",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "286 pivničných kobiek pre 301 bytov",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Rezervačný poplatok 15 000 € + prvá splátka od 15 % v 2. polroku 2026",
+      "largePaymentWhen": "Zvyšok nezistený",
+      "completion": "Q4 2029",
+      "sourceUrls": [
+        "https://milrose.sk/o-projekte/",
+        "https://milrose.sk/byt/byt-c8-01/"
+      ],
+      "note": null
+    },
+    "EDVIN Properties": {
+      "parkingRequired": "Povinné dokúpiť k 2kk a 3kk",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Povinné dokúpiť k 2kk a 3kk",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Vlastné nádvorie",
+      "bikeSpace": "Miestnosť pre bicykle a kočíky",
+      "financing": "Nezistené",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Q4 2028",
+      "sourceUrls": [
+        "https://www.mytna37.sk/ponuka",
+        "https://www.mytna37.sk/wp-content/uploads/2026/03/mytna-technicky-standard.pdf"
+      ],
+      "note": null
+    },
+    "YIT Slovakia": {
+      "parkingRequired": "Voliteľné, možno dokúpiť",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Pivničná kobka v cene",
+      "storagePrice": "V cene",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "10/90, pri vybraných bytoch aj družstevné bývanie",
+      "largePaymentWhen": "90 %, presný termín nezistený",
+      "completion": "Magnolia 4 jan/feb 2027, Magnolia 5 marec 2027",
+      "sourceUrls": [
+        "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu/nuppu-magnolia-4/pdsk105710",
+        "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu/nuppu-magnolia-5/pdsk107784"
+      ],
+      "note": null
+    },
+    "Slnečná Strana": {
+      "parkingRequired": "Možno prikúpiť vnútorné alebo vonkajšie státie",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Možno prikúpiť pivničnú kobku",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Zelená strecha s biozáhradkami, bazén a detské ihrisko",
+      "bikeSpace": "Cyklodepozit a vonkajšie stojisko, nabíjanie",
+      "financing": "Projekt financuje Slovenská sporiteľňa, klientsky model nezistený",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Október 2026",
+      "sourceUrls": [
+        "https://slnecnastrana.sk/o-projekte/",
+        "https://slnecnastrana.sk/vybavenie-objektu/"
+      ],
+      "note": null
+    }
+  },
+  "projects": {
+    "ALVY": {
+      "parkingRequired": "Pridelené ku každému bytu, dokupuje sa",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Pridelená ku každému bytu, dokupuje sa",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Nezistené",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Nezistené",
+      "sourceUrls": [
+        "https://www.alvy.sk/cennik"
+      ]
+    },
+    "BAYA": {
+      "parkingRequired": "Voliteľné, projekt ráta s miestom ku každému bytu",
+      "parkingPrice": "Od 34 000 €",
+      "storageRequired": "Voliteľná pivničná kobka",
+      "storagePrice": "Od 13 284 €",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Hypotéka cez partnerského špecialistu Generali",
+      "largePaymentWhen": "Nezistené",
+      "completion": "2027",
+      "sourceUrls": [
+        "https://www.baya.btk.sk/sk/o-projekte"
+      ]
+    },
+    "Downtown Yards": {
+      "parkingRequired": "Dostatok parkovacích miest",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Nezistené",
+      "storagePrice": "Nezistené",
+      "commonSpace": "6 100 m² zelene, vnútorné dvory a komunitný klub",
+      "bikeSpace": "Cyklotrasa a cyklostojiská v každom vchode",
+      "financing": "Hypotekárny servis GEPARD FINANCE",
+      "largePaymentWhen": "Nezistené",
+      "completion": "1. etapa 2026–2027, podľa bytu 2026/2027",
+      "sourceUrls": [
+        "https://d-y.sk/"
+      ]
+    },
+    "Galvania Rezidencie": {
+      "parkingRequired": "Voliteľné podzemné státie",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Voliteľná pivničná kobka",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Súkromný park 6 000 m², oddychové zóny, ihrisko a fitness",
+      "bikeSpace": "Nezistené",
+      "financing": "20/80",
+      "largePaymentWhen": "80 % po kolaudácii a zápise bytov na list vlastníctva",
+      "completion": "Blok C 4Q 2026–1Q 2027, blok A 3Q 2027–1Q 2028",
+      "sourceUrls": [
+        "https://www.galvania.sk/o-projekte/"
+      ]
+    },
+    "Jašik Ružinov": {
+      "parkingRequired": "Podzemné aj vonkajšie státia",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Podľa konkrétnej jednotky",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Zelený vnútroblok",
+      "bikeSpace": "Nezistené",
+      "financing": "Možná hypotéka, podmienky podľa jednotky a fázy",
+      "largePaymentWhen": "Podľa dohodnutého harmonogramu",
+      "completion": "Nezistené",
+      "sourceUrls": [
+        "https://jasikruzinov.sk/o-projekte",
+        "https://jasikruzinov.sk/faq"
+      ]
+    },
+    "Kvarter": {
+      "parkingRequired": "Voliteľné veľkometrážne státie ku každému bytu/apartmánu",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Voliteľný pivničný priestor ku každému bytu/apartmánu",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Dizajnové átrium, vnútorná pavlač a komunitná strešná terasa",
+      "bikeSpace": "Cykloparkovisko, servisovňa a umyvárka",
+      "financing": "Bez inflačnej doložky, pomoc finančných expertov",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Jar 2027",
+      "sourceUrls": [
+        "https://kvarter-living.sk/benefity"
+      ]
+    },
+    "Milrose": {
+      "parkingRequired": "440 podzemných miest pre 301 bytov",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "286 pivničných kobiek pre 301 bytov",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "Rezervačný poplatok 15 000 € + prvá splátka od 15 % v 2. polroku 2026",
+      "largePaymentWhen": "Zvyšok nezistený",
+      "completion": "Q4 2029",
+      "sourceUrls": [
+        "https://milrose.sk/o-projekte/",
+        "https://milrose.sk/byt/byt-c8-01/"
+      ]
+    },
+    "Mýtna 37": {
+      "parkingRequired": "Povinné dokúpiť k 2kk a 3kk",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Povinné dokúpiť k 2kk a 3kk",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Vlastné nádvorie",
+      "bikeSpace": "Miestnosť pre bicykle a kočíky",
+      "financing": "Nezistené",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Q4 2028",
+      "sourceUrls": [
+        "https://www.mytna37.sk/ponuka",
+        "https://www.mytna37.sk/wp-content/uploads/2026/03/mytna-technicky-standard.pdf"
+      ]
+    },
+    "NUPPU": {
+      "parkingRequired": "Voliteľné, možno dokúpiť",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Pivničná kobka v cene",
+      "storagePrice": "V cene",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "10/90, pri vybraných bytoch aj družstevné bývanie",
+      "largePaymentWhen": "90 %, presný termín nezistený",
+      "completion": "Magnolia 4 jan/feb 2027, Magnolia 5 marec 2027",
+      "sourceUrls": [
+        "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu/nuppu-magnolia-4/pdsk105710",
+        "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu/nuppu-magnolia-5/pdsk107784"
+      ]
+    },
+    "Slnečná Strana": {
+      "parkingRequired": "Možno prikúpiť vnútorné alebo vonkajšie státie",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Možno prikúpiť pivničnú kobku",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Zelená strecha s biozáhradkami, bazén a detské ihrisko",
+      "bikeSpace": "Cyklodepozit a vonkajšie stojisko, nabíjanie",
+      "financing": "Projekt financuje Slovenská sporiteľňa, klientsky model nezistený",
+      "largePaymentWhen": "Nezistené",
+      "completion": "Október 2026",
+      "sourceUrls": [
+        "https://slnecnastrana.sk/o-projekte/",
+        "https://slnecnastrana.sk/vybavenie-objektu/"
+      ]
+    },
+    "Tíšiny": {
+      "parkingRequired": "Vnútorné aj vonkajšie miesta",
+      "parkingPrice": "Nezistené",
+      "storageRequired": "Nezistené",
+      "storagePrice": "Nezistené",
+      "commonSpace": "Nezistené",
+      "bikeSpace": "Nezistené",
+      "financing": "20/80",
+      "largePaymentWhen": "80 % po právoplatnosti kolaudačného rozhodnutia",
+      "completion": "Žiadosť 4Q 2028, odovzdanie 2Q 2029",
+      "sourceUrls": [
+        "https://www.tisiny.sk/"
+      ]
     }
   }
 }
