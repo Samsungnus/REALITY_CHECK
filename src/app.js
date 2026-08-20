@@ -70,6 +70,7 @@ const PRIORITY_APARTMENT_COLUMNS = [
 
 const chartRegistry = new Map();
 let projectMap = null;
+let lastTrackedPath = null;
 const RUZINOV_VIEW = { center: [48.1538, 17.157], zoom: 13 };
 const euro = new Intl.NumberFormat("sk-SK", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 0 });
@@ -126,6 +127,14 @@ function routeFromHash() {
   return ROUTES[route] ? route : "prehlad";
 }
 
+function trackCurrentRoute() {
+  if (location.hash === "#toggle-goatcounter" || !window.goatcounter?.count) return;
+  const path = `${location.pathname}${location.search}${location.hash || "#/prehlad"}`;
+  if (path === lastTrackedPath) return;
+  window.goatcounter.count({ path, title: document.title });
+  lastTrackedPath = path;
+}
+
 function activateRoute() {
   const route = routeFromHash();
   document.querySelectorAll("[data-view]").forEach((element) => {
@@ -137,6 +146,7 @@ function activateRoute() {
   });
   document.querySelector("#page-title").textContent = ROUTES[route];
   document.title = `${ROUTES[route]} · Bratislavské bývanie`;
+  trackCurrentRoute();
   document.body.dataset.route = route;
   window.scrollTo({ top: 0, behavior: "instant" });
   requestAnimationFrame(() => {
@@ -794,6 +804,7 @@ function renderCharts() {
 
 function bindControls() {
   window.addEventListener("hashchange", activateRoute);
+  document.querySelector("#goatcounter-script")?.addEventListener("load", trackCurrentRoute);
   document.querySelector("#refresh-button").addEventListener("click", () => location.reload());
   document.querySelector("#map-ruzinov").addEventListener("click", () => {
     renderProjectMap();
