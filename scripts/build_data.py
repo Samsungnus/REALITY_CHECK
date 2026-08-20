@@ -15,6 +15,10 @@ OUTPUT_DIR = ROOT / "src" / "data"
 PRICE_FILE = SOURCE_DIR / "bratislava_ceny_bytov_2020_2026.xlsx"
 APARTMENT_FILE = SOURCE_DIR / "developerske-projekty.xlsx"
 
+DEVELOPER_FALLBACKS = {
+    "Slnečná Strana": "Slnečná Strana",
+}
+
 
 def serialise(value: Any) -> Any:
     if isinstance(value, (datetime, date)):
@@ -116,6 +120,11 @@ def main() -> None:
     apartment_headers, apartment_rows = extract_table(
         apartment_workbook["Byty"], {"Projekt", "Označenie bytu", "Stav"}
     )
+    for row in apartment_rows:
+        if not str(row.get("Developer") or "").strip():
+            fallback = DEVELOPER_FALLBACKS.get(str(row.get("Projekt") or "").strip())
+            if fallback:
+                row["Developer"] = fallback
     write_json(
         "apartments.json",
         {
