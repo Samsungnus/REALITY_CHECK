@@ -1,0 +1,40 @@
+{
+  "developers": {
+    "CRESCO Real Estate": {
+      "parkingRequired": null,
+      "parkingPrice": null,
+      "storageRequired": null,
+      "storagePrice": null,
+      "commonSpace": null,
+      "bikeSpace": null,
+      "financing": null,
+      "largePaymentWhen": null,
+      "completion": null,
+      "note": null
+    },
+    "Immocap": {
+      "parkingRequired": null,
+      "parkingPrice": null,
+      "storageRequired": null,
+      "storagePrice": null,
+      "commonSpace": null,
+      "bikeSpace": null,
+      "financing": null,
+      "largePaymentWhen": null,
+      "completion": null,
+      "note": null
+    },
+    "Tatra Real": {
+      "parkingRequired": null,
+      "parkingPrice": null,
+      "storageRequired": null,
+      "storagePrice": null,
+      "commonSpace": null,
+      "bikeSpace": null,
+      "financing": null,
+      "largePaymentWhen": null,
+      "completion": null,
+      "note": null
+    }
+  }
+}

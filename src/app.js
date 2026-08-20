@@ -2,6 +2,7 @@ const ROUTES = {
   prehlad: "Prehľad trhu",
   ceny: "Vývoj cien",
   byty: "Ponuka bytov",
+  developeri: "Developeri",
   mapa: "Mapa projektov",
   komentare: "Komentáre",
   vyber: "Môj výber",
@@ -46,6 +47,7 @@ const state = {
   apartmentColumns: [],
   sources: [],
   projects: [],
+  developerDetails: {},
   comments: {},
   apartmentMeta: {},
   priceMeta: {},
@@ -165,12 +167,13 @@ async function loadData() {
   const error = document.querySelector("#global-error");
   error.hidden = true;
   try {
-    const [prices, apartments, sources, projects, comments] = await Promise.all([
+    const [prices, apartments, sources, projects, comments, developers] = await Promise.all([
       loadJson("./data/prices.json"),
       loadJson("./data/apartments.json"),
       loadJson("./data/sources.json"),
       loadJson("./data/projects.json"),
       loadJson("./data/comments.json"),
+      loadJson("./data/developers.json"),
     ]);
     state.prices = prices.rows || [];
     state.priceMeta = prices.meta || {};
@@ -184,6 +187,7 @@ async function loadData() {
     state.sources = sources.rows || [];
     state.projects = projects.projects || [];
     state.comments = comments;
+    state.developerDetails = developers.developers || {};
     renderAll();
   } catch (caught) {
     console.error(caught);
@@ -459,6 +463,73 @@ function renderSources() {
     link.append(segment, copy, arrow);
     container.append(link);
   });
+}
+
+const DEVELOPER_COLUMNS = [
+  ["developer", "Developer"],
+  ["projects", "Sledované projekty"],
+  ["parkingRequired", "Parkovanie"],
+  ["parkingPrice", "Cena parkovania"],
+  ["storageRequired", "Kobka"],
+  ["storagePrice", "Cena kobky"],
+  ["commonSpace", "Spoločný priestor"],
+  ["bikeSpace", "Priestor na bicykle"],
+  ["financing", "Financovanie"],
+  ["largePaymentWhen", "Vyššia časť sa platí"],
+  ["completion", "Kolaudácia"],
+  ["note", "Poznámka / výnimky"],
+];
+
+function developerValue(value) {
+  return value === null || value === undefined || value === "" ? "Nezistené" : String(value);
+}
+
+function renderDevelopers() {
+  const grouped = new Map();
+  state.apartments.forEach((apartment) => {
+    const developer = String(apartment.Developer || "").trim();
+    if (!developer) return;
+    if (!grouped.has(developer)) grouped.set(developer, new Set());
+    if (apartment.Projekt) grouped.get(developer).add(apartment.Projekt);
+  });
+
+  const rows = [...grouped.entries()]
+    .sort(([left], [right]) => left.localeCompare(right, "sk"))
+    .map(([developer, projects]) => ({
+      developer,
+      projects: [...projects].sort((left, right) => left.localeCompare(right, "sk")).join(", "),
+      ...(state.developerDetails[developer] || {}),
+    }));
+
+  const headRow = document.createElement("tr");
+  DEVELOPER_COLUMNS.forEach(([, label]) => {
+    const cell = document.createElement("th");
+    cell.textContent = label;
+    headRow.append(cell);
+  });
+  document.querySelector("#developers-table thead").replaceChildren(headRow);
+
+  const body = document.querySelector("#developers-table tbody");
+  body.replaceChildren();
+  rows.forEach((record) => {
+    const row = document.createElement("tr");
+    DEVELOPER_COLUMNS.forEach(([key]) => {
+      const cell = document.createElement("td");
+      const value = developerValue(record[key]);
+      if (["parkingRequired", "storageRequired", "commonSpace", "bikeSpace"].includes(key)) {
+        const chip = document.createElement("span");
+        chip.className = `developer-chip ${value === "Áno" ? "yes" : value === "Nie" ? "no" : "unknown"}`;
+        chip.textContent = value;
+        cell.append(chip);
+      } else {
+        cell.textContent = value;
+      }
+      row.append(cell);
+    });
+    body.append(row);
+  });
+
+  document.querySelector("#developer-result-count").textContent = `${integer.format(rows.length)} sledovaní developeri`;
 }
 
 function renderComments() {
@@ -849,6 +920,7 @@ function renderAll() {
   renderOverview();
   renderCurated();
   renderSources();
+  renderDevelopers();
   renderProjectMap();
   renderComments();
   renderSeasonality();

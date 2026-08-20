@@ -43,6 +43,7 @@
         <a href="#/prehlad" data-route="prehlad"><span aria-hidden="true">⌂</span> Prehľad</a>
         <a href="#/ceny" data-route="ceny"><span aria-hidden="true">↗</span> Vývoj cien</a>
         <a href="#/byty" data-route="byty"><span aria-hidden="true">▦</span> Ponuka bytov</a>
+        <a href="#/developeri" data-route="developeri"><span aria-hidden="true">▥</span> Developeri</a>
         <a href="#/mapa" data-route="mapa"><span aria-hidden="true">⌖</span> Mapa projektov</a>
         <a href="#/komentare" data-route="komentare"><span aria-hidden="true">✎</span> Komentáre</a>
         <a href="#/vyber" data-route="vyber"><span aria-hidden="true">★</span> Môj výber</a>
@@ -242,6 +243,26 @@
             <span id="page-status">Strana 1</span>
             <button id="page-next" type="button" class="secondary-button">Nasledujúca →</button>
           </div>
+        </article>
+      </section>
+
+      <section id="view-developeri" class="view" data-view="developeri" hidden>
+        <div class="page-intro table-intro">
+          <div>
+            <span class="section-kicker">Podmienky kúpy</span>
+            <h2>Porovnanie developerov</h2>
+          </div>
+          <p id="developer-result-count">Načítavam developerov…</p>
+        </div>
+
+        <article class="table-panel developer-panel">
+          <div class="table-scroll" tabindex="0" aria-label="Porovnávacia tabuľka developerov, posúvajte aj vodorovne">
+            <table id="developers-table" class="developers-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="developer-note">Podmienky sa môžu líšiť podľa projektu alebo konkrétnej etapy. Nezistené údaje priebežne dopĺňame manuálne.</p>
         </article>
       </section>
 
