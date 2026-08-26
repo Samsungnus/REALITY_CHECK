@@ -206,6 +206,15 @@
       "developerUrl": "https://panonska.sk/",
       "available": 276,
       "estimated": true
+    },
+    {
+      "name": "Zelené Záluhy",
+      "address": "Hanulova, Dúbravka",
+      "lat": 48.177157,
+      "lng": 17.044189,
+      "developerUrl": "https://zelenezaluhy.sk/",
+      "available": 29,
+      "estimated": false
     }
   ],
   "meta": {
