@@ -1144,6 +1144,7 @@ td a:hover {
 }
 
 .map-toolbar strong { display: block; margin-top: 2px; font-size: 14px; }
+.map-estimate-note { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
 .map-toolbar-actions { display: flex; gap: 6px; }
 
 .map-button {
@@ -1178,11 +1179,16 @@ td a:hover {
   background: var(--navy);
   color: white;
   box-shadow: 0 5px 15px rgba(13, 42, 48, 0.34);
-  font: 800 11px/1.15 "Manrope", sans-serif;
   text-align: center;
   white-space: normal;
   transform: translateX(-50%);
 }
+
+.project-marker-label > strong,
+.project-marker-label > small { display: block; }
+.project-marker-label > strong { font: 800 11px/1.15 "Manrope", sans-serif; }
+.project-marker-label > small { margin-top: 3px; color: #bfe4d7; font: 700 9px/1.1 "DM Sans", sans-serif; }
+.project-marker-label.estimated { border-style: dashed; background: #526368; }
 
 .project-marker-label::after {
   content: "";
@@ -1197,6 +1203,8 @@ td a:hover {
   transform: translateX(-50%) rotate(45deg);
 }
 
+.project-marker-label.estimated::after { background: #526368; }
+
 .project-popup strong,
 .project-popup span { display: block; }
 
@@ -1207,6 +1215,8 @@ td a:hover {
 }
 
 .project-popup span { color: var(--muted); font-size: 12px; }
+.project-popup .project-popup-availability { margin-top: 7px; color: #28775b; font-weight: 800; }
+.project-popup .project-popup-availability.estimated { color: #8b5c18; }
 .project-popup-links { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 12px; }
 .project-popup-links a { color: #2b7765; font-size: 11px; font-weight: 800; text-decoration: none; }
 .project-popup-links a:hover { text-decoration: underline; }

@@ -611,7 +611,28 @@ function renderComments() {
     rankings.append(panel);
   });
 }
-function createProjectPopup(project) {
+function normalizedProjectName(value) {
+  return String(value || "").trim().toLocaleLowerCase("sk-SK");
+}
+
+function getProjectAvailability(project) {
+  const dataProject = normalizedProjectName(project.dataProject || project.name);
+  const projectRows = state.apartments.filter((row) => normalizedProjectName(row.Projekt) === dataProject);
+  if (projectRows.length) {
+    return {
+      count: projectRows.filter((row) => row.Stav === "available").length,
+      estimated: false,
+    };
+  }
+  return { count: project.available, estimated: Boolean(project.estimated) };
+}
+
+function availabilityCopy(availability) {
+  if (!isNumber(availability.count)) return "Počet voľných nezverejnený";
+  return `${availability.estimated ? "≈ " : ""}${integer.format(availability.count)} voľných`;
+}
+
+function createProjectPopup(project, availability) {
   const popup = document.createElement("div");
   popup.className = "project-popup";
 
@@ -619,6 +640,11 @@ function createProjectPopup(project) {
   title.textContent = project.name;
   const address = document.createElement("span");
   address.textContent = project.address;
+  const available = document.createElement("span");
+  available.className = `project-popup-availability${availability.estimated ? " estimated" : ""}`;
+  available.textContent = availability.estimated && isNumber(availability.count)
+    ? `Odhad: ${integer.format(availability.count)} voľných bytov`
+    : availabilityCopy(availability);
 
   const links = document.createElement("div");
   links.className = "project-popup-links";
@@ -634,7 +660,7 @@ function createProjectPopup(project) {
   directions.rel = "noopener noreferrer";
   directions.textContent = "Navigovať ↗";
   links.append(website, directions);
-  popup.append(title, address, links);
+  popup.append(title, address, available, links);
   return popup;
 }
 
@@ -656,9 +682,14 @@ function renderProjectMap() {
     }).addTo(projectMap);
 
     state.projects.forEach((project) => {
+      const availability = getProjectAvailability(project);
       const markerLabel = document.createElement("span");
-      markerLabel.className = "project-marker-label";
-      markerLabel.textContent = project.name;
+      markerLabel.className = `project-marker-label${availability.estimated ? " estimated" : ""}`;
+      const markerName = document.createElement("strong");
+      markerName.textContent = project.name;
+      const markerAvailability = document.createElement("small");
+      markerAvailability.textContent = availabilityCopy(availability);
+      markerLabel.append(markerName, markerAvailability);
       const icon = window.L.divIcon({
         className: "project-marker-wrap",
         html: markerLabel.outerHTML,
@@ -668,7 +699,7 @@ function renderProjectMap() {
       });
       window.L.marker([project.lat, project.lng], { icon, title: project.name })
         .addTo(projectMap)
-        .bindPopup(createProjectPopup(project), { minWidth: 220 });
+        .bindPopup(createProjectPopup(project, availability), { minWidth: 220 });
     });
   }
 

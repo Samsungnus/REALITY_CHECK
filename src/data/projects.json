@@ -1,21 +1,197 @@
 {
   "projects": [
-    { "name": "Chalupkova", "address": "Chalupkova / Košická / Mlynské nivy", "lat": 48.144914, "lng": 17.130135, "developerUrl": "https://chalupkova.sk/" },
-    { "name": "ALVY", "address": "Prievozská, Ružinov", "lat": 48.14814, "lng": 17.14861, "developerUrl": "https://www.alvy.sk/" },
-    { "name": "Slnečná Strana", "address": "Zóna Galvania, Ružinov", "lat": 48.16628, "lng": 17.17339, "developerUrl": "https://slnecnastrana.sk/" },
-    { "name": "Zváračák", "address": "Račianska 75, Nové Mesto", "lat": 48.169545, "lng": 17.126806, "developerUrl": "https://zvaracak.sk/" },
-    { "name": "Milrose", "address": "Miletičova, Ružová dolina", "lat": 48.154427, "lng": 17.138244, "developerUrl": "https://milrose.sk/" },
-    { "name": "BAYA", "address": "Bajkalská / Prešovská, Ružinov", "lat": 48.1534, "lng": 17.1381, "developerUrl": "https://www.baya.btk.sk/sk" },
-    { "name": "Jašik Ružinov", "address": "Jašíkova, Ružinov", "lat": 48.155908, "lng": 17.166455, "developerUrl": "https://jasikruzinov.sk/" },
-    { "name": "Mýtna 37", "address": "Mýtna 37 / Šancová, Staré Mesto", "lat": 48.157327, "lng": 17.119255, "developerUrl": "https://www.mytna37.sk/" },
-    { "name": "Tíšiny", "address": "Zátišie, Nové Mesto", "lat": 48.17323, "lng": 17.1398, "developerUrl": "https://www.tisiny.sk/" },
-    { "name": "Kvarter", "address": "Jégého, Ružinov", "lat": 48.158024, "lng": 17.135249, "developerUrl": "https://kvarter-living.sk/" },
-    { "name": "PARQ", "address": "Zátišie, Nové Mesto", "lat": 48.172792, "lng": 17.141043, "developerUrl": "https://parq.sk/" },
-    { "name": "Galvania Rezidencie", "address": "Galvaniho, Ružinov", "lat": 48.164522, "lng": 17.173136, "developerUrl": "https://www.galvania.sk/byty/" },
-    { "name": "NUPPU", "address": "Hraničná / Mlynské nivy, Ružinov", "lat": 48.142774, "lng": 17.159752, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu?tab=projects" },
-    { "name": "ZWIRN", "address": "Košická / Svätoplukova, Ružinov", "lat": 48.147401, "lng": 17.131361, "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/zwirn?tab=projects" },
-    { "name": "Ister Tower", "address": "Chalupkova / Landererova, downtown", "lat": 48.142877, "lng": 17.127842, "developerUrl": "https://istertower.com/" },
-    { "name": "Čerešne", "address": "Polianky, Dúbravka", "lat": 48.177488, "lng": 17.054707, "developerUrl": "https://www.ceresne.sk/" },
-    { "name": "Štedrá Residence", "address": "Štedrá, Ružinov", "lat": 48.153312, "lng": 17.177475, "developerUrl": "https://www.stedra.sk/" }
-  ]
+    {
+      "name": "Chalupkova",
+      "address": "Chalupkova / Košická / Mlynské nivy",
+      "lat": 48.144914,
+      "lng": 17.130135,
+      "developerUrl": "https://chalupkova.sk/",
+      "available": 148,
+      "estimated": true
+    },
+    {
+      "name": "ALVY",
+      "address": "Prievozská, Ružinov",
+      "lat": 48.14814,
+      "lng": 17.14861,
+      "developerUrl": "https://www.alvy.sk/",
+      "available": 47,
+      "estimated": false
+    },
+    {
+      "name": "Slnečná Strana",
+      "address": "Zóna Galvania, Ružinov",
+      "lat": 48.16628,
+      "lng": 17.17339,
+      "developerUrl": "https://slnecnastrana.sk/",
+      "available": 47,
+      "estimated": false
+    },
+    {
+      "name": "Zváračák",
+      "address": "Račianska 75, Nové Mesto",
+      "lat": 48.169545,
+      "lng": 17.126806,
+      "developerUrl": "https://zvaracak.sk/",
+      "available": 1300,
+      "estimated": true
+    },
+    {
+      "name": "Milrose",
+      "address": "Miletičova, Ružová dolina",
+      "lat": 48.154427,
+      "lng": 17.138244,
+      "developerUrl": "https://milrose.sk/",
+      "available": 75,
+      "estimated": false
+    },
+    {
+      "name": "BAYA",
+      "address": "Bajkalská / Prešovská, Ružinov",
+      "lat": 48.1534,
+      "lng": 17.1381,
+      "developerUrl": "https://www.baya.btk.sk/sk",
+      "available": 99,
+      "estimated": false
+    },
+    {
+      "name": "Jašik Ružinov",
+      "address": "Jašíkova, Ružinov",
+      "lat": 48.155908,
+      "lng": 17.166455,
+      "developerUrl": "https://jasikruzinov.sk/",
+      "available": 32,
+      "estimated": false
+    },
+    {
+      "name": "Mýtna 37",
+      "address": "Mýtna 37 / Šancová, Staré Mesto",
+      "lat": 48.157327,
+      "lng": 17.119255,
+      "developerUrl": "https://www.mytna37.sk/",
+      "available": 28,
+      "estimated": false
+    },
+    {
+      "name": "Tíšiny",
+      "address": "Zátišie, Nové Mesto",
+      "lat": 48.17323,
+      "lng": 17.1398,
+      "developerUrl": "https://www.tisiny.sk/",
+      "available": 35,
+      "estimated": false
+    },
+    {
+      "name": "Kvarter",
+      "address": "Jégého, Ružinov",
+      "lat": 48.158024,
+      "lng": 17.135249,
+      "developerUrl": "https://kvarter-living.sk/",
+      "available": 25,
+      "estimated": false
+    },
+    {
+      "name": "PARQ",
+      "address": "Zátišie, Nové Mesto",
+      "lat": 48.172792,
+      "lng": 17.141043,
+      "developerUrl": "https://parq.sk/",
+      "available": 32,
+      "estimated": false
+    },
+    {
+      "name": "Galvania Rezidencie",
+      "address": "Galvaniho, Ružinov",
+      "lat": 48.164522,
+      "lng": 17.173136,
+      "developerUrl": "https://www.galvania.sk/byty/",
+      "available": 14,
+      "estimated": false
+    },
+    {
+      "name": "NUPPU",
+      "address": "Hraničná / Mlynské nivy, Ružinov",
+      "lat": 48.142774,
+      "lng": 17.159752,
+      "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/nuppu?tab=projects",
+      "available": 51,
+      "estimated": false
+    },
+    {
+      "name": "ZWIRN",
+      "address": "Košická / Svätoplukova, Ružinov",
+      "lat": 48.147401,
+      "lng": 17.131361,
+      "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/zwirn?tab=projects",
+      "available": 86,
+      "estimated": false
+    },
+    {
+      "name": "Ister Tower",
+      "address": "Chalupkova / Landererova, downtown",
+      "lat": 48.142877,
+      "lng": 17.127842,
+      "developerUrl": "https://istertower.com/",
+      "available": 69,
+      "estimated": false
+    },
+    {
+      "name": "Čerešne",
+      "address": "Polianky, Dúbravka",
+      "lat": 48.177488,
+      "lng": 17.054707,
+      "developerUrl": "https://www.ceresne.sk/",
+      "available": 88,
+      "estimated": false
+    },
+    {
+      "name": "Štedrá Residence",
+      "address": "Štedrá, Ružinov",
+      "lat": 48.153312,
+      "lng": 17.177475,
+      "developerUrl": "https://www.stedra.sk/",
+      "available": 15,
+      "estimated": false
+    },
+    {
+      "name": "Teslova 19",
+      "address": "Teslova 19, Ružinov",
+      "lat": 48.16194,
+      "lng": 17.144518,
+      "developerUrl": "https://teslova19.sk/",
+      "available": 15,
+      "estimated": true
+    },
+    {
+      "name": "Mlynárka",
+      "address": "Mlynské nivy / Plynárenská, Ružinov",
+      "lat": 48.1439,
+      "lng": 17.1421,
+      "developerUrl": "https://www.yit.sk/predaj-bytov/bratislava/ruzinov/mlynarka",
+      "available": 457,
+      "estimated": true
+    },
+    {
+      "name": "Istropolis",
+      "address": "Trnavské mýto, Nové Mesto",
+      "lat": 48.159144,
+      "lng": 17.12717,
+      "developerUrl": "https://www.istropolis.sk/",
+      "available": 60,
+      "estimated": true
+    },
+    {
+      "name": "Danubius Two",
+      "address": "Jégého / Trnavská cesta, Ružinov",
+      "lat": 48.157697,
+      "lng": 17.132676,
+      "developerUrl": "https://www.finep.sk/sk/danubius-two",
+      "available": 79,
+      "estimated": true
+    }
+  ],
+  "meta": {
+    "availabilityUpdated": "2026-08-23",
+    "estimateNote": "Odhady sú označené znakom ≈. Pri projektoch z Excelu sa počet prepočíta automaticky."
+  }
 }
