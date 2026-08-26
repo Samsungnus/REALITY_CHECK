@@ -188,10 +188,28 @@
       "developerUrl": "https://www.finep.sk/sk/danubius-two",
       "available": 79,
       "estimated": true
+    },
+    {
+      "name": "SOHO",
+      "address": "Romanova / Chorvátske rameno, Petržalka",
+      "lat": 48.11741,
+      "lng": 17.1062,
+      "developerUrl": "https://sohobratislava.sk/byvanie/",
+      "available": 215,
+      "estimated": true
+    },
+    {
+      "name": "Panónska",
+      "address": "Panónska cesta, Petržalka",
+      "lat": 48.12032,
+      "lng": 17.0995,
+      "developerUrl": "https://panonska.sk/",
+      "available": 276,
+      "estimated": true
     }
   ],
   "meta": {
-    "availabilityUpdated": "2026-08-23",
+    "availabilityUpdated": "2026-08-26",
     "estimateNote": "Odhady sú označené znakom ≈. Pri projektoch z Excelu sa počet prepočíta automaticky."
   }
 }
