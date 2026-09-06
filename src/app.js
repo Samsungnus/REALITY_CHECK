@@ -774,6 +774,12 @@ function comparisonScoreClass(value) {
   return "score-high";
 }
 
+function comparisonPriceLabel(project) {
+  if (project.priceLabel) return project.priceLabel;
+  if (!isNumber(project.price)) return "Cena —";
+  return `${project.priceHistorical ? "historicky " : ""}${euro.format(project.price)}${project.priceNote || ""}`;
+}
+
 function appendComparisonDetail(container, label, value, className = "") {
   const row = document.createElement("span");
   row.className = `comparison-popup-row${className ? ` ${className}` : ""}`;
@@ -795,9 +801,7 @@ function createComparisonPopup(project) {
   appendComparisonDetail(popup, "Interiér", isNumber(project.area)
     ? `${project.areaEstimated ? "≈ " : ""}${new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 2 }).format(project.area)} m²`
     : "—");
-  appendComparisonDetail(popup, "Cena", isNumber(project.price)
-    ? `${project.priceHistorical ? "historicky " : ""}${euro.format(project.price)}`
-    : "—");
+  appendComparisonDetail(popup, "Cena", comparisonPriceLabel(project));
   appendComparisonDetail(popup, "Cena / m²", isNumber(project.pricePerM2) ? `${integer.format(project.pricePerM2)} €/m²` : "—");
   appendComparisonDetail(popup, "MHD na Trnavské mýto", project.transit || "—");
   appendComparisonDetail(popup, "Index", isNumber(project.index) ? integer.format(project.index) : "—", comparisonScoreClass(project.index));
@@ -842,7 +846,7 @@ function renderComparisonMap() {
       const markerName = document.createElement("strong");
       markerName.textContent = project.name;
       const markerSummary = document.createElement("small");
-      const price = isNumber(project.price) ? euro.format(project.price) : "Cena —";
+      const price = comparisonPriceLabel(project);
       const score = isNumber(project.index) ? `index ${integer.format(project.index)}` : "index —";
       markerSummary.textContent = `${price} · ${score}`;
       markerLabel.append(markerName, markerSummary);
