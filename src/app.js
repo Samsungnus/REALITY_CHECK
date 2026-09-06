@@ -4,6 +4,7 @@ const ROUTES = {
   byty: "Ponuka bytov",
   developeri: "Developeri",
   mapa: "Mapa projektov",
+  mapa3i: "Mapa 3-izbových bytov",
   komentare: "Komentáre",
   vyber: "Môj výber",
   odkazy: "Užitočné odkazy",
@@ -47,6 +48,7 @@ const state = {
   apartmentColumns: [],
   sources: [],
   projects: [],
+  comparisonProjects: [],
   developerDetails: {},
   comments: {},
   apartmentMeta: {},
@@ -72,6 +74,7 @@ const PRIORITY_APARTMENT_COLUMNS = [
 
 const chartRegistry = new Map();
 let projectMap = null;
+let comparisonMap = null;
 let lastTrackedPath = null;
 const RUZINOV_VIEW = { center: [48.1538, 17.157], zoom: 13 };
 const euro = new Intl.NumberFormat("sk-SK", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
@@ -154,6 +157,7 @@ function activateRoute() {
   requestAnimationFrame(() => {
     redrawVisibleCharts();
     if (route === "mapa") renderProjectMap();
+    if (route === "mapa3i") renderComparisonMap();
   });
 }
 
@@ -167,11 +171,12 @@ async function loadData() {
   const error = document.querySelector("#global-error");
   error.hidden = true;
   try {
-    const [prices, apartments, sources, projects, comments, developers] = await Promise.all([
+    const [prices, apartments, sources, projects, comparisonProjects, comments, developers] = await Promise.all([
       loadJson("./data/prices.json"),
       loadJson("./data/apartments.json"),
       loadJson("./data/sources.json"),
       loadJson("./data/projects.json"),
+      loadJson("./data/comparison-projects.json"),
       loadJson("./data/comments.json"),
       loadJson("./data/developers.json"),
     ]);
@@ -186,6 +191,7 @@ async function loadData() {
     state.apartmentMeta = apartments.meta || {};
     state.sources = sources.rows || [];
     state.projects = projects.projects || [];
+    state.comparisonProjects = comparisonProjects.projects || [];
     state.comments = comments;
     state.developerDetails = developers.developers || {};
     renderAll();
@@ -467,7 +473,11 @@ function renderSources() {
 
 const DEVELOPER_COLUMNS = [
   ["developer", "Developer"],
-  ["projects", "Sledované projekty"],
+  ["project", "Názov projektu"],
+  ["averagePriceM2Room1", "Priemer €/m² · 1-izbové"],
+  ["averagePriceM2Room2", "Priemer €/m² · 2-izbové"],
+  ["averagePriceM2Room3", "Priemer €/m² · 3-izbové"],
+  ["averagePriceM2Overall", "Priemer €/m² · projekt"],
   ["parkingRequired", "Parkovanie"],
   ["parkingPrice", "Cena parkovania"],
   ["storageRequired", "Kobka"],
@@ -484,22 +494,72 @@ function developerValue(value) {
   return value === null || value === undefined || value === "" ? "Nezistené" : String(value);
 }
 
+function plausiblePricePerM2(value) {
+  if (!Number.isFinite(value) || value <= 0) return null;
+  const normalized = value < 100 ? value * 1000 : value;
+  return normalized >= 1000 && normalized <= 15000 ? normalized : null;
+}
+
+function apartmentPricePerM2(apartment) {
+  const published = plausiblePricePerM2(Number(apartment["Cena za m² interiéru"]));
+  if (published !== null) return published;
+
+  let price = Number(apartment["Aktuálna cena"]);
+  const interior = Number(apartment["Interiér m²"]);
+  if (Number.isFinite(price) && price > 0 && price < 10000) price *= 1000;
+  return Number.isFinite(price) && price > 0 && Number.isFinite(interior) && interior > 0
+    ? plausiblePricePerM2(price / interior)
+    : null;
+}
+
+function isApartmentUnit(apartment) {
+  const type = String(apartment["Typ jednotky"] || "").trim().toLocaleLowerCase("sk");
+  return Number(apartment["Počet izieb"]) > 0 && !type.includes("apart") && !type.includes("nebyt");
+}
+
+function average(values) {
+  const usable = values.filter((value) => Number.isFinite(value) && value > 0);
+  return usable.length ? usable.reduce((sum, value) => sum + value, 0) / usable.length : null;
+}
+
+function developerPriceValue(value) {
+  return Number.isFinite(value) ? euro.format(Math.round(value)) + "/m²" : "Nezistené";
+}
+
 function renderDevelopers() {
   const grouped = new Map();
   state.apartments.forEach((apartment) => {
     const developer = String(apartment.Developer || "").trim();
-    if (!developer) return;
-    if (!grouped.has(developer)) grouped.set(developer, new Set());
-    if (apartment.Projekt) grouped.get(developer).add(apartment.Projekt);
+    const project = String(apartment.Projekt || "").trim();
+    if (!developer || !project) return;
+    const key = developer + "\u0000" + project;
+    if (!grouped.has(key)) grouped.set(key, { developer, project, apartments: [] });
+    grouped.get(key).apartments.push(apartment);
   });
 
-  const rows = [...grouped.entries()]
-    .sort(([left], [right]) => left.localeCompare(right, "sk"))
-    .map(([developer, projects]) => ({
-      developer,
-      projects: [...projects].sort((left, right) => left.localeCompare(right, "sk")).join(", "),
-      ...(state.developerDetails[developer] || {}),
-    }));
+  const rows = [...grouped.values()]
+    .sort((left, right) => left.project.localeCompare(right.project, "sk"))
+    .map(({ developer, project, apartments }) => {
+      const pricedApartments = apartments.filter((apartment) =>
+        apartment.Stav === "available" &&
+        isApartmentUnit(apartment) &&
+        apartmentPricePerM2(apartment) !== null
+      );
+      const roomAverage = (rooms) => average(
+        pricedApartments
+          .filter((apartment) => Number(apartment["Počet izieb"]) === rooms)
+          .map(apartmentPricePerM2)
+      );
+      return {
+        developer,
+        project,
+        averagePriceM2Room1: roomAverage(1),
+        averagePriceM2Room2: roomAverage(2),
+        averagePriceM2Room3: roomAverage(3),
+        averagePriceM2Overall: average(pricedApartments.map(apartmentPricePerM2)),
+        ...(state.developerDetails[developer] || {}),
+      };
+    });
 
   const headRow = document.createElement("tr");
   DEVELOPER_COLUMNS.forEach(([, label]) => {
@@ -515,7 +575,8 @@ function renderDevelopers() {
     const row = document.createElement("tr");
     DEVELOPER_COLUMNS.forEach(([key]) => {
       const cell = document.createElement("td");
-      const value = developerValue(record[key]);
+      const isPricePerM2 = key.startsWith("averagePriceM2");
+      const value = isPricePerM2 ? developerPriceValue(record[key]) : developerValue(record[key]);
       if (["parkingRequired", "storageRequired", "commonSpace", "bikeSpace"].includes(key)) {
         const chip = document.createElement("span");
         chip.className = `developer-chip ${value === "Áno" ? "yes" : value === "Nie" ? "no" : "unknown"}`;
@@ -529,7 +590,7 @@ function renderDevelopers() {
     body.append(row);
   });
 
-  document.querySelector("#developer-result-count").textContent = `${integer.format(rows.length)} sledovaní developeri`;
+  document.querySelector("#developer-result-count").textContent = integer.format(rows.length) + " sledovaných projektov";
 }
 
 function renderComments() {
@@ -706,6 +767,99 @@ function renderProjectMap() {
   window.setTimeout(() => projectMap.invalidateSize(), 0);
 }
 
+function comparisonScoreClass(value) {
+  if (!isNumber(value)) return "score-unrated";
+  if (value <= 120) return "score-good";
+  if (value <= 150) return "score-mid";
+  return "score-high";
+}
+
+function appendComparisonDetail(container, label, value, className = "") {
+  const row = document.createElement("span");
+  row.className = `comparison-popup-row${className ? ` ${className}` : ""}`;
+  const key = document.createElement("b");
+  key.textContent = label;
+  row.append(key, document.createTextNode(value));
+  container.append(row);
+}
+
+function createComparisonPopup(project) {
+  const popup = document.createElement("div");
+  popup.className = "project-popup comparison-popup";
+  const title = document.createElement("strong");
+  title.textContent = project.name;
+  popup.append(title);
+
+  if (project.unit) appendComparisonDetail(popup, "Byt", project.unit);
+  if (project.statusLabel) appendComparisonDetail(popup, "Stav", project.statusLabel);
+  appendComparisonDetail(popup, "Interiér", isNumber(project.area)
+    ? `${project.areaEstimated ? "≈ " : ""}${new Intl.NumberFormat("sk-SK", { maximumFractionDigits: 2 }).format(project.area)} m²`
+    : "—");
+  appendComparisonDetail(popup, "Cena", isNumber(project.price)
+    ? `${project.priceHistorical ? "historicky " : ""}${euro.format(project.price)}`
+    : "—");
+  appendComparisonDetail(popup, "Cena / m²", isNumber(project.pricePerM2) ? `${integer.format(project.pricePerM2)} €/m²` : "—");
+  appendComparisonDetail(popup, "MHD na Trnavské mýto", project.transit || "—");
+  appendComparisonDetail(popup, "Index", isNumber(project.index) ? integer.format(project.index) : "—", comparisonScoreClass(project.index));
+  if (project.locationEstimated) appendComparisonDetail(popup, "Poloha", "Orientačný bod", "estimated");
+
+  const links = document.createElement("div");
+  links.className = "project-popup-links";
+  const website = document.createElement("a");
+  website.href = safeUrl(project.url) || "#";
+  website.target = "_blank";
+  website.rel = "noopener noreferrer";
+  website.textContent = "Stránka projektu ↗";
+  const directions = document.createElement("a");
+  directions.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${project.lat},${project.lng}`)}`;
+  directions.target = "_blank";
+  directions.rel = "noopener noreferrer";
+  directions.textContent = "Navigovať ↗";
+  links.append(website, directions);
+  popup.append(links);
+  return popup;
+}
+
+function renderComparisonMap() {
+  const container = document.querySelector("#comparison-map");
+  if (!container || !state.comparisonProjects.length) return;
+  document.querySelector("#comparison-map-count").textContent = `${integer.format(state.comparisonProjects.length)} kandidátov`;
+  if (!window.L) {
+    container.textContent = "Mapu sa nepodarilo načítať. Skontrolujte internetové pripojenie a obnovte stránku.";
+    return;
+  }
+
+  if (!comparisonMap) {
+    comparisonMap = window.L.map(container, { zoomControl: true }).setView(RUZINOV_VIEW.center, RUZINOV_VIEW.zoom);
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> prispievatelia',
+    }).addTo(comparisonMap);
+
+    state.comparisonProjects.forEach((project) => {
+      const markerLabel = document.createElement("span");
+      markerLabel.className = `project-marker-label comparison-marker-label ${comparisonScoreClass(project.index)}${project.locationEstimated ? " estimated" : ""}`;
+      const markerName = document.createElement("strong");
+      markerName.textContent = project.name;
+      const markerSummary = document.createElement("small");
+      const price = isNumber(project.price) ? euro.format(project.price) : "Cena —";
+      const score = isNumber(project.index) ? `index ${integer.format(project.index)}` : "index —";
+      markerSummary.textContent = `${price} · ${score}`;
+      markerLabel.append(markerName, markerSummary);
+      const icon = window.L.divIcon({
+        className: "project-marker-wrap",
+        html: markerLabel.outerHTML,
+        iconSize: [1, 1],
+        iconAnchor: [0, 0],
+        popupAnchor: [0, -48],
+      });
+      window.L.marker([project.lat, project.lng], { icon, title: `${project.name}: ${price}, ${score}` })
+        .addTo(comparisonMap)
+        .bindPopup(createComparisonPopup(project), { minWidth: 255 });
+    });
+  }
+  window.setTimeout(() => comparisonMap.invalidateSize(), 0);
+}
 function renderSeasonality() {
   const container = document.querySelector("#seasonality-chart");
   container.replaceChildren();
@@ -917,6 +1071,18 @@ function bindControls() {
     if (!projectMap || !state.projects.length) return;
     projectMap.fitBounds(state.projects.map((project) => [project.lat, project.lng]), { padding: [34, 34] });
   });
+  document.querySelector("#comparison-map-ruzinov").addEventListener("click", () => {
+    renderComparisonMap();
+    comparisonMap?.setView(RUZINOV_VIEW.center, RUZINOV_VIEW.zoom);
+  });
+  document.querySelector("#comparison-map-all").addEventListener("click", () => {
+    renderComparisonMap();
+    if (!comparisonMap || !state.comparisonProjects.length) return;
+    comparisonMap.fitBounds(state.comparisonProjects.map((project) => [project.lat, project.lng]), {
+      padding: [55, 55],
+      maxZoom: 13,
+    });
+  });
   ["#filter-search", "#filter-project", "#filter-status", "#filter-rooms"].forEach((selector) => {
     const element = document.querySelector(selector);
     element.addEventListener(element.tagName === "INPUT" ? "input" : "change", () => {
@@ -953,6 +1119,7 @@ function renderAll() {
   renderSources();
   renderDevelopers();
   renderProjectMap();
+  renderComparisonMap();
   renderComments();
   renderSeasonality();
   renderPriceCopy();

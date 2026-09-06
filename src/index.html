@@ -45,6 +45,7 @@
         <a href="#/byty" data-route="byty"><span aria-hidden="true">▦</span> Ponuka bytov</a>
         <a href="#/developeri" data-route="developeri"><span aria-hidden="true">▥</span> Developeri</a>
         <a href="#/mapa" data-route="mapa"><span aria-hidden="true">⌖</span> Mapa projektov</a>
+        <a href="#/mapa3i" data-route="mapa3i"><span aria-hidden="true">◎</span> Mapa 3i</a>
         <a href="#/komentare" data-route="komentare"><span aria-hidden="true">✎</span> Komentáre</a>
         <a href="#/vyber" data-route="vyber"><span aria-hidden="true">★</span> Môj výber</a>
         <a href="#/odkazy" data-route="odkazy"><span aria-hidden="true">↗</span> Užitočné odkazy</a>
@@ -250,7 +251,7 @@
         <div class="page-intro table-intro">
           <div>
             <span class="section-kicker">Podmienky kúpy</span>
-            <h2>Porovnanie developerov</h2>
+            <h2>Porovnanie developerských projektov</h2>
           </div>
           <p id="developer-result-count">Načítavam developerov…</p>
         </div>
@@ -262,7 +263,7 @@
               <tbody></tbody>
             </table>
           </div>
-          <p class="developer-note">Podmienky sa môžu líšiť podľa projektu alebo konkrétnej etapy. Nezistené údaje priebežne dopĺňame manuálne.</p>
+          <p class="developer-note">Priemerná cena za m² je aritmetický priemer aktuálne voľných bytov so zverejnenou cenou za m²; apartmány, nebytové jednotky a technicky neplatné extrémy mimo 1 000–15 000 €/m² sa nezapočítavajú. Podmienky sa môžu líšiť podľa projektu alebo konkrétnej etapy. Nezistené údaje priebežne dopĺňame manuálne.</p>
         </article>
       </section>
 
@@ -321,6 +322,21 @@
           <div class="map-toolbar-actions">
             <button id="map-ruzinov" class="map-button" type="button">Ružinov</button>
             <button id="map-all" class="map-button" type="button">Všetky</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-mapa3i" class="view map-view" data-view="mapa3i" hidden>
+        <div id="comparison-map" class="projects-map comparison-map" aria-label="Mapa porovnávaných trojizbových bytov v Bratislave"></div>
+        <div class="map-toolbar comparison-map-toolbar" aria-label="Informácie a ovládanie porovnávacej mapy">
+          <div>
+            <span class="section-kicker">3-izbové byty</span>
+            <strong id="comparison-map-count">Načítavam…</strong>
+            <small class="map-estimate-note">Cena · index · MHD na Trnavské mýto</small>
+          </div>
+          <div class="map-toolbar-actions">
+            <button id="comparison-map-ruzinov" class="map-button" type="button">Ružinov</button>
+            <button id="comparison-map-all" class="map-button" type="button">Všetky</button>
           </div>
         </div>
       </section>
